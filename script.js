@@ -1,4 +1,3 @@
-// script.js
 document.getElementById('jsonFile').addEventListener('change', loadJSON);
 
 function loadJSON(event) {
@@ -22,11 +21,42 @@ function displayResorts(resorts) {
         resortElement.className = 'resort';
 
         resortElement.innerHTML = `
-            <img src="${resort.image}" alt="${resort.name}">
-            <h2>${resort.name}</h2>
-            <p>${resort.description}</p>
+            <img src="${resort.Images[0]}" alt="${resort.Name}">
+            <h2>${resort.Name}</h2>
+            <p>${resort.Description.substring(0, 100)}...</p>
+            <div class="resort-details">
+                <a href="${resort['Google Map Link']}" target="_blank">Location: ${resort.Location}</a>
+                <p>Rating: ${resort.Rating} (${resort['Total Number of Reviews']})</p>
+                <p>Review: ${resort.Review}</p>
+                <button onclick="showMoreDetails(${resorts.indexOf(resort)})">More Details</button>
+            </div>
         `;
 
         container.appendChild(resortElement);
     });
 }
+
+function showMoreDetails(index) {
+    const resort = JSON.parse(localStorage.getItem('resorts'))[index];
+    alert(`
+        Name: ${resort.Name}
+        Location: ${resort.Location}
+        Description: ${resort.Description}
+        Rating: ${resort.Rating} (${resort['Total Number of Reviews']})
+        Review: ${resort.Review}
+        Rooms: ${resort.Rooms.map(room => room['Villa Name']).join(', ')}
+    `);
+}
+
+document.getElementById('jsonFile').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const resorts = JSON.parse(e.target.result);
+        localStorage.setItem('resorts', JSON.stringify(resorts));
+        displayResorts(resorts);
+    };
+    reader.readAsText(file);
+});
