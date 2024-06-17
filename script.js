@@ -33,7 +33,7 @@ function displayResorts(resorts) {
                 </div>
                 <div class="resort-rating-review">
                     <p>Rating: ${resort.Rating}</p>
-                    <p>Review: ${resort.Review}</p>
+                    <p class="review">Review: ${resort.Review}</p>
                 </div>
                 <p class="resort-description">${resort.Description.substring(0, 100)}...</p>
                 <button onclick="showMoreDetails(${resorts.indexOf(resort)})">More Details</button>
