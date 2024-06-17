@@ -68,11 +68,20 @@ main {
 .resort-rating-review {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+}
+
+.resort-rating-review p {
+    margin: 0;
 }
 
 .resort p {
     color: #666;
+}
+
+.review {
+    color: green;
 }
 
 .resort:hover {
