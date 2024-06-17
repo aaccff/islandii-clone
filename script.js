@@ -30,4 +30,3 @@ function displayResorts(resorts) {
         container.appendChild(resortElement);
     });
 }
-
