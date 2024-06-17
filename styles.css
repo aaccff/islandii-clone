@@ -30,7 +30,7 @@ main {
 
 .resort {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin: 1em;
@@ -42,11 +42,11 @@ main {
 }
 
 .resort img {
-    width: 100%;
-    height: auto;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 5px;
-    margin-bottom: 1em;
+    margin-right: 1em;
 }
 
 .resort h2 {
@@ -123,7 +123,26 @@ main {
     cursor: not-allowed;
 }
 
-@media (min-width: 600px) {
+@media (max-width: 600px) {
+    .resort {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .resort img {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 1em;
+    }
+
+    .resort-rating-review {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (min-width: 601px) {
     .resort {
         flex-direction: row;
     }
@@ -132,22 +151,5 @@ main {
         width: 150px;
         height: 150px;
         margin-right: 1em;
-        margin-bottom: 0;
-    }
-}
-
-@media (min-width: 768px) {
-    main {
-        justify-content: flex-start;
-    }
-
-    .resort {
-        max-width: 45%;
-    }
-}
-
-@media (min-width: 1024px) {
-    .resort {
-        max-width: 30%;
     }
 }
