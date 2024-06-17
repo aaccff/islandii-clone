@@ -51,6 +51,26 @@ main {
     margin: 0.5em 0;
 }
 
+.resort-location {
+    font-size: 0.9em;
+    color: #004d99;
+}
+
+.resort-location a {
+    color: #004d99;
+    text-decoration: none;
+}
+
+.resort-location a:hover {
+    text-decoration: underline;
+}
+
+.resort-rating-review {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .resort p {
     color: #666;
 }
@@ -63,13 +83,9 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex: 1;
 }
 
-.resort-details a {
-    color: #004d99;
-    text-decoration: none;
-}
-
-.resort-details a:hover {
-    text-decoration: underline;
+.resort-description {
+    margin-top: 1em;
 }
