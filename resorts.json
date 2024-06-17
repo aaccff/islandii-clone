@@ -1,1 +1,13 @@
+[
+    {
+        "name": "Paradise Resort",
+        "description": "A beautiful resort with stunning views.",
+        "image": "https://via.placeholder.com/300"
+    },
+    {
+        "name": "Ocean Breeze",
+        "description": "Experience the ocean breeze and luxurious amenities.",
+        "image": "https://via.placeholder.com/300"
+    }
+]
 
