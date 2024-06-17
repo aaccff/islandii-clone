@@ -1,12 +1,45 @@
 [
     {
-        "name": "Paradise Resort",
-        "description": "A beautiful resort with stunning views.",
-        "image": "https://via.placeholder.com/300"
-    },
-    {
-        "name": "Ocean Breeze",
-        "description": "Experience the ocean breeze and luxurious amenities.",
-        "image": "https://via.placeholder.com/300"
+        "Name": "Dreamland Maldives",
+        "Location": "Dreamland Maldives Baa Atoll, 06080, Maldives",
+        "Google Map Link": "https://goo.gl/maps/C8i7J14LiY2LeTX66",
+        "Description": "Dreamland Maldives is an elite 4-star hotel in the Baa Atoll area...",
+        "Images": [
+            "https://islandii.com/wp-content/webp-express/webp-images/uploads/2019/09/DREAMLAND-Maldives-islandii.com-1.jpg.webp",
+            "https://islandii.com/wp-content/webp-express/webp-images/uploads/2019/09/DREAMLAND-Maldives-islandii.com-15.jpg.webp",
+            "...additional image URLs..."
+        ],
+        "Review": "Excellent",
+        "Rating": "9",
+        "Total Number of Reviews": "737 reviews",
+        "Rooms": [
+            {
+                "Villa Name": "Beach Bungalow",
+                "Villa Size": "70 sqrm",
+                "Villa Prize": "US$ 78,128",
+                "Nights Counts": "303",
+                "Adults Counts": "2",
+                "Villa Features": ["70 sqrm", "Ocean view", "Terrace", "Tea/Coffee maker", "Minibar", "Bathtub", "Safe", "Flat screen TV", "Telephone", "Open Air Shower", "AC", "Hairdryer", "Bathrobe", "Desk", "Sitting area", "Free toiletries", "Patio", "Slippers", "Outdoor dining area", "Outdoor furniture."]
+            },
+            {
+                "Villa Name": "Water Bungalow",
+                "Villa Size": "70 sqrm",
+                "Villa Prize": "US$ 87,738",
+                "Nights Counts": "303",
+                "Adults Counts": "2",
+                "Villa Features": ["70 sqrm", "Ocean view", "Terrace", "Tea/Coffee maker", "Minibar", "Bathtub", "Safe", "Flat screen TV", "Telephone", "Shower", "AC", "Hairdryer", "Bathrobe", "Desk", "Sitting area", "Free toiletries", "Patio", "Slippers", "Outdoor dining area", "Outdoor furniture."]
+            }
+        ],
+        "Cancellation Policies": [
+            {"Stay dates": "12.01.2024 - 31.10.2024", "Number of days before arrival": "22"}
+        ],
+        "Amenities": [
+            {"Amenity Title": "Bathroom", "Amenity Features": ["Toilet paper", "Towels", "Bath or shower", "Private bathroom", "Toilet", "Free toiletries", "Bathrobe", "Hairdryer", "Bath", "Shower"]},
+            {"Amenity Title": "Bedroom", "Amenity Features": ["Linen", "Wardrobe or closet", "Extra long beds (> 2 metres)"]},
+            {"Amenity Title": "Outdoors", "Amenity Features": ["Outdoor furniture", "Beachfront", "Sun terrace", "Private beach area", "BBQ facilities", "Garden"]}
+        ],
+        "Foods And Drinks": [
+            {"Food Title": "Lake View Restaurant", "Food Description": "Lake View Restaurant serves breakfast, lunch, and dinner with a view of the lake...", "Image Url": "https://islandii.com/wp-content/webp-express/webp-images/uploads/2023/09/479697458.jpg.webp"}
+        ]
     }
 ]
