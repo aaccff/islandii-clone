@@ -92,3 +92,17 @@ function updatePageInfo() {
     const totalPages = Math.ceil(resorts.length / itemsPerPage);
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 }
+
+document.getElementById('jsonFile').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        resorts = JSON.parse(e.target.result);
+        localStorage.setItem('resorts', JSON.stringify(resorts));
+        displayResorts();
+        updatePageInfo();
+    };
+    reader.readAsText(file);
+});
