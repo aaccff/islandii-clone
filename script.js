@@ -22,9 +22,9 @@ function displayResorts(resorts) {
 
         resortElement.innerHTML = `
             <img src="${resort.Images[0]}" alt="${resort.Name}">
-            <h2>${resort.Name}</h2>
-            <p>${resort.Description.substring(0, 100)}...</p>
             <div class="resort-details">
+                <h2>${resort.Name}</h2>
+                <p>${resort.Description.substring(0, 100)}...</p>
                 <a href="${resort['Google Map Link']}" target="_blank">Location: ${resort.Location}</a>
                 <p>Rating: ${resort.Rating} (${resort['Total Number of Reviews']})</p>
                 <p>Review: ${resort.Review}</p>
@@ -37,7 +37,8 @@ function displayResorts(resorts) {
 }
 
 function showMoreDetails(index) {
-    const resort = JSON.parse(localStorage.getItem('resorts'))[index];
+    const resorts = JSON.parse(localStorage.getItem('resorts'));
+    const resort = resorts[index];
     alert(`
         Name: ${resort.Name}
         Location: ${resort.Location}
