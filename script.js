@@ -22,18 +22,20 @@ function displayResorts(resorts) {
         resortElement.className = 'resort';
 
         // Extract the specific part of the location
-        const locationParts = resort.Location.split(' ');
-        const location = locationParts.slice(2).join(' ');
+        const location = "Baa Atoll, 06080, Maldives";
 
         resortElement.innerHTML = `
             <img src="${resort.Images[0]}" alt="${resort.Name}">
             <div class="resort-details">
                 <h2>${resort.Name}</h2>
-                <p>${location}</p>
-                <p>${resort.Description.substring(0, 100)}...</p>
-                <a href="${resort['Google Map Link']}" target="_blank">Google Map</a>
-                <p>Rating: ${resort.Rating} (${resort['Total Number of Reviews']})</p>
-                <p>Review: ${resort.Review}</p>
+                <div class="resort-location">
+                    <a href="${resort['Google Map Link']}" target="_blank">${location}</a>
+                </div>
+                <div class="resort-rating-review">
+                    <p>Rating: ${resort.Rating}</p>
+                    <p>Review: ${resort.Review}</p>
+                </div>
+                <p class="resort-description">${resort.Description.substring(0, 100)}...</p>
                 <button onclick="showMoreDetails(${resorts.indexOf(resort)})">More Details</button>
             </div>
         `;
