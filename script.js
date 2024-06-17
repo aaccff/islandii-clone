@@ -1,3 +1,7 @@
+let currentPage = 1;
+const itemsPerPage = 9;
+let resorts = [];
+
 document.getElementById('jsonFile').addEventListener('change', loadJSON);
 
 function loadJSON(event) {
@@ -6,22 +10,26 @@ function loadJSON(event) {
 
     const reader = new FileReader();
     reader.onload = function(e) {
-        const resorts = JSON.parse(e.target.result);
+        resorts = JSON.parse(e.target.result);
         localStorage.setItem('resorts', JSON.stringify(resorts));
-        displayResorts(resorts);
+        displayResorts();
+        updatePageInfo();
     };
     reader.readAsText(file);
 }
 
-function displayResorts(resorts) {
+function displayResorts() {
     const container = document.getElementById('resorts-container');
     container.innerHTML = '';
 
-    resorts.forEach(resort => {
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedResorts = resorts.slice(start, end);
+
+    paginatedResorts.forEach(resort => {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
 
-        // Extract the specific part of the location
         const location = "Baa Atoll, 06080, Maldives";
 
         resortElement.innerHTML = `
@@ -42,10 +50,11 @@ function displayResorts(resorts) {
 
         container.appendChild(resortElement);
     });
+
+    updatePaginationButtons();
 }
 
 function showMoreDetails(index) {
-    const resorts = JSON.parse(localStorage.getItem('resorts'));
     const resort = resorts[index];
     alert(`
         Name: ${resort.Name}
@@ -57,15 +66,43 @@ function showMoreDetails(index) {
     `);
 }
 
+function prevPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        displayResorts();
+        updatePageInfo();
+    }
+}
+
+function nextPage() {
+    if ((currentPage * itemsPerPage) < resorts.length) {
+        currentPage++;
+        displayResorts();
+        updatePageInfo();
+    }
+}
+
+function updatePaginationButtons() {
+    document.getElementById('prev').disabled = currentPage === 1;
+    document.getElementById('next').disabled = (currentPage * itemsPerPage) >= resorts.length;
+}
+
+function updatePageInfo() {
+    const pageInfo = document.getElementById('page-info');
+    const totalPages = Math.ceil(resorts.length / itemsPerPage);
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+}
+
 document.getElementById('jsonFile').addEventListener('change', function(event) {
     const file = event.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = function(e) {
-        const resorts = JSON.parse(e.target.result);
+        resorts = JSON.parse(e.target.result);
         localStorage.setItem('resorts', JSON.stringify(resorts));
-        displayResorts(resorts);
+        displayResorts();
+        updatePageInfo();
     };
     reader.readAsText(file);
 });
