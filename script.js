@@ -16,7 +16,10 @@ function displayResorts() {
             <img src="${resort.Images[0]}" alt="${resort.Name}">
             <div class="resort-details">
                 <div class="resort-info">
-                    <h2>${resort.Name}</h2>
+                    <div class="resort-header">
+                        <h2>${resort.Name}</h2>
+                        <p class="review">Review: ${resort.Review}</p>
+                    </div>
                     <div class="resort-location">
                         <a href="${resort['Google Map Link']}" target="_blank">${location}</a>
                     </div>
@@ -24,7 +27,6 @@ function displayResorts() {
                     <button onclick="showMoreDetails(${resorts.indexOf(resort)})">More Details</button>
                 </div>
                 <div class="resort-rating-review">
-                    <p class="review">Review: ${resort.Review}</p>
                     <p class="rating">Rating: ${resort.Rating}</p>
                 </div>
             </div>
