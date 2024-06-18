@@ -5,7 +5,6 @@ document.getElementById('jsonFile').addEventListener('change', function(event) {
     reader.onload = function(e) {
         try {
             resorts = JSON.parse(e.target.result);
-            console.log("JSON Loaded:", resorts); // Debug: Log the loaded JSON data
             currentPage = 1;
             displayResorts();
         } catch (error) {
@@ -33,7 +32,11 @@ function displayResorts() {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
 
-        const location = "Baa Atoll, 06080, Maldives";
+        // Extracting location information
+        const atoll = resort.Atoll || "Unknown Atoll";
+        const pinCode = resort.PinCode || "Unknown PinCode";
+        const country = resort.Country || "Unknown Country";
+        const location = `${atoll}, ${pinCode}, ${country}`;
 
         resortElement.innerHTML = `
             <img src="${resort.Images[0]}" alt="${resort.Name}">
@@ -46,11 +49,11 @@ function displayResorts() {
                     <div class="resort-location">
                         <a href="${resort['Google Map Link']}" target="_blank">${location}</a>
                     </div>
+                    <div class="resort-rating-review">
+                        <p class="rating">Rating: ${resort.Rating}</p>
+                    </div>
                     <div class="resort-description">${resort.Description.substring(0, 100)}...</div>
                     <button onclick="showMoreDetails(${resorts.indexOf(resort)})">More Details</button>
-                </div>
-                <div class="resort-rating-review">
-                    <p class="rating">Rating: ${resort.Rating}</p>
                 </div>
             </div>
         `;
