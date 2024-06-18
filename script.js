@@ -26,26 +26,28 @@ function displayResorts() {
     const end = start + itemsPerPage;
     const paginatedResorts = resorts.slice(start, end);
 
-    paginatedResorts.forEach(resort => {
+    paginatedResorts.forEach((resort, index) => {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
 
         const location = "Baa Atoll, 06080, Maldives";
 
         resortElement.innerHTML = `
-            <img src="${resort.Images[0]}" alt="${resort.Name}">
             <div class="resort-details">
-                <h2>${resort.Name}</h2>
+                <div class="resort-header">
+                    <h2>${resort.Name}</h2>
+                    <p class="review">Review: ${resort.Review}</p>
+                </div>
                 <div class="resort-location">
                     <a href="${resort['Google Map Link']}" target="_blank">${location}</a>
                 </div>
-                <div class="resort-rating-review">
+                <div class="resort-rating">
                     <p>Rating: ${resort.Rating}</p>
-                    <p class="review">Review: ${resort.Review}</p>
                 </div>
                 <p class="resort-description">${resort.Description.substring(0, 100)}...</p>
-                <button onclick="showMoreDetails(${resorts.indexOf(resort)})">More Details</button>
+                <button onclick="showMoreDetails(${index})">More Details</button>
             </div>
+            <img src="${resort.Images[0]}" alt="${resort.Name}">
         `;
 
         container.appendChild(resortElement);
@@ -93,16 +95,11 @@ function updatePageInfo() {
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 }
 
-document.getElementById('jsonFile').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        resorts = JSON.parse(e.target.result);
-        localStorage.setItem('resorts', JSON.stringify(resorts));
+document.addEventListener('DOMContentLoaded', function() {
+    const storedResorts = localStorage.getItem('resorts');
+    if (storedResorts) {
+        resorts = JSON.parse(storedResorts);
         displayResorts();
         updatePageInfo();
-    };
-    reader.readAsText(file);
+    }
 });
