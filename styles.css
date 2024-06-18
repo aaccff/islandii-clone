@@ -46,7 +46,7 @@ main {
     height: 150px;
     object-fit: cover;
     border-radius: 5px;
-    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .resort h2 {
@@ -125,20 +125,19 @@ main {
 
 @media (max-width: 600px) {
     .resort {
-        flex-direction: column-reverse;
-        align-items: center;
+        flex-direction: row;
+        align-items: flex-start;
     }
 
     .resort img {
-        width: 100%;
-        height: auto;
-        margin-left: 0;
-        margin-bottom: 1em;
+        width: 100px;
+        height: 100px;
+        margin-right: 1em;
     }
 
     .resort-rating-review {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
     }
 }
 
@@ -150,6 +149,6 @@ main {
     .resort img {
         width: 150px;
         height: 150px;
-        margin-left: 1em;
+        margin-right: 1em;
     }
 }
