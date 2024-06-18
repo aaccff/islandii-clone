@@ -30,7 +30,7 @@ main {
 
 .resort {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin: 1em 0;
@@ -42,23 +42,20 @@ main {
 }
 
 .resort img {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 5px;
+    margin-right: 1em;
 }
 
 .resort h2 {
     margin: 0.5em 0;
-    font-size: 1.5em;
-    display: inline-block;
 }
 
 .resort-location {
     font-size: 0.9em;
     color: #004d99;
-    margin-top: 0.5em;
 }
 
 .resort-location a {
@@ -72,19 +69,17 @@ main {
 
 .resort-rating-review {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-top: 0.5em;
-    font-size: 1em;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.resort-rating-review p {
+    margin: 0;
 }
 
 .review {
     color: green;
-    margin-left: 1em;
-}
-
-.rating {
-    margin-top: 0.5em;
 }
 
 .resort p {
@@ -97,28 +92,13 @@ main {
 
 .resort-details {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex: 1;
-}
-
-.resort-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.resort-info {
-    display: flex;
     flex-direction: column;
+    justify-content: space-between;
     flex: 1;
 }
 
 .resort-description {
     margin-top: 1em;
-    font-size: 1em;
 }
 
 #pagination {
@@ -143,39 +123,21 @@ main {
     cursor: not-allowed;
 }
 
-#page-info {
-    margin-left: 1em;
-    font-size: 1em;
-}
-
 @media (max-width: 600px) {
     .resort {
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-start;
     }
 
     .resort img {
-        width: 100%;
-        margin-bottom: 1em;
-    }
-
-    .resort-details {
-        flex-direction: column;
-    }
-
-    .resort-header {
-        flex-direction: column;
-        align-items: flex-start;
+        width: 100px;
+        height: 100px;
+        margin-right: 1em;
     }
 
     .resort-rating-review {
         flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-    }
-
-    .resort-info {
-        width: 100%;
+        align-items: center;
     }
 }
 
@@ -188,18 +150,5 @@ main {
         width: 150px;
         height: 150px;
         margin-right: 1em;
-    }
-
-    .resort-details {
-        flex-direction: row;
-    }
-
-    .resort-header {
-        flex-direction: row;
-    }
-
-    .resort-rating-review {
-        flex-direction: column;
-        align-items: flex-end;
     }
 }
