@@ -26,7 +26,7 @@ function displayResorts() {
     const end = start + itemsPerPage;
     const paginatedResorts = resorts.slice(start, end);
 
-    paginatedResorts.forEach((resort, index) => {
+    paginatedResorts.forEach(resort => {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
 
@@ -35,18 +35,16 @@ function displayResorts() {
         resortElement.innerHTML = `
             <img src="${resort.Images[0]}" alt="${resort.Name}">
             <div class="resort-details">
-                <div class="resort-header">
-                    <h2>${resort.Name}</h2>
-                    <p class="review">Review: ${resort.Review}</p>
-                </div>
+                <h2>${resort.Name}</h2>
                 <div class="resort-location">
                     <a href="${resort['Google Map Link']}" target="_blank">${location}</a>
                 </div>
-                <div class="resort-rating">
+                <div class="resort-rating-review">
                     <p>Rating: ${resort.Rating}</p>
+                    <p class="review">Review: ${resort.Review}</p>
                 </div>
                 <p class="resort-description">${resort.Description.substring(0, 100)}...</p>
-                <button onclick="showMoreDetails(${index})">More Details</button>
+                <button onclick="showMoreDetails(${resorts.indexOf(resort)})">More Details</button>
             </div>
         `;
 
@@ -85,8 +83,8 @@ function nextPage() {
 }
 
 function updatePaginationButtons() {
-    document.getElementById('prevButton').disabled = currentPage === 1;
-    document.getElementById('nextButton').disabled = (currentPage * itemsPerPage) >= resorts.length;
+    document.getElementById('prev').disabled = currentPage === 1;
+    document.getElementById('next').disabled = (currentPage * itemsPerPage) >= resorts.length;
 }
 
 function updatePageInfo() {
@@ -95,11 +93,16 @@ function updatePageInfo() {
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const storedResorts = localStorage.getItem('resorts');
-    if (storedResorts) {
-        resorts = JSON.parse(storedResorts);
+document.getElementById('jsonFile').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        resorts = JSON.parse(e.target.result);
+        localStorage.setItem('resorts', JSON.stringify(resorts));
         displayResorts();
         updatePageInfo();
-    }
+    };
+    reader.readAsText(file);
 });
