@@ -1,5 +1,5 @@
 let currentPage = 1;
-const itemsPerPage = 9;
+const itemsPerPage = 15;
 let resorts = [];
 
 document.getElementById('jsonFile').addEventListener('change', loadJSON);
