@@ -1,6 +1,29 @@
+document.getElementById('jsonFile').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+        try {
+            resorts = JSON.parse(e.target.result);
+            console.log("JSON Loaded:", resorts); // Debug: Log the loaded JSON data
+            currentPage = 1;
+            displayResorts();
+        } catch (error) {
+            console.error("Error parsing JSON:", error);
+        }
+    };
+    
+    reader.readAsText(file);
+});
+
 function displayResorts() {
     const container = document.getElementById('resorts-container');
     container.innerHTML = '';
+
+    if (!resorts || resorts.length === 0) {
+        container.innerHTML = '<p>No resorts available</p>';
+        return;
+    }
 
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
@@ -36,4 +59,21 @@ function displayResorts() {
     });
 
     updatePaginationButtons();
+}
+
+function updatePaginationButtons() {
+    const totalPages = Math.ceil(resorts.length / itemsPerPage);
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+    const pageInfo = document.getElementById('page-info');
+
+    prevButton.disabled = currentPage === 1;
+    nextButton.disabled = currentPage === totalPages;
+
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+}
+
+function showMoreDetails(index) {
+    const resort = resorts[index];
+    alert(`Showing more details for ${resort.Name}`);
 }
