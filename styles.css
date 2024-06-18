@@ -46,7 +46,7 @@ main {
     height: 150px;
     object-fit: cover;
     border-radius: 5px;
-    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .resort h2 {
@@ -137,14 +137,14 @@ main {
 
 @media (max-width: 600px) {
     .resort {
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: center;
     }
 
     .resort img {
         width: 100%;
         height: auto;
-        margin-left: 0;
+        margin-right: 0;
         margin-bottom: 1em;
     }
 
@@ -162,6 +162,6 @@ main {
     .resort img {
         width: 150px;
         height: 150px;
-        margin-left: 1em;
+        margin-right: 1em;
     }
 }
