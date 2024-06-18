@@ -33,6 +33,7 @@ function displayResorts() {
         const location = "Baa Atoll, 06080, Maldives";
 
         resortElement.innerHTML = `
+            <img src="${resort.Images[0]}" alt="${resort.Name}">
             <div class="resort-details">
                 <div class="resort-header">
                     <h2>${resort.Name}</h2>
@@ -47,7 +48,6 @@ function displayResorts() {
                 <p class="resort-description">${resort.Description.substring(0, 100)}...</p>
                 <button onclick="showMoreDetails(${index})">More Details</button>
             </div>
-            <img src="${resort.Images[0]}" alt="${resort.Name}">
         `;
 
         container.appendChild(resortElement);
