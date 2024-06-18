@@ -52,6 +52,7 @@ main {
 .resort h2 {
     margin: 0.5em 0;
     font-size: 1.5em;
+    display: inline-block;
 }
 
 .resort-location {
@@ -72,14 +73,14 @@ main {
 .resort-rating-review {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
     margin-top: 0.5em;
     font-size: 1em;
 }
 
 .review {
     color: green;
-    margin-top: 0.5em;
+    margin-left: 1em;
 }
 
 .rating {
@@ -100,6 +101,13 @@ main {
     justify-content: space-between;
     align-items: flex-start;
     flex: 1;
+}
+
+.resort-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .resort-info {
@@ -155,6 +163,11 @@ main {
         flex-direction: column;
     }
 
+    .resort-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .resort-rating-review {
         flex-direction: row;
         justify-content: space-between;
@@ -178,6 +191,10 @@ main {
     }
 
     .resort-details {
+        flex-direction: row;
+    }
+
+    .resort-header {
         flex-direction: row;
     }
 
