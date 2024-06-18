@@ -97,6 +97,13 @@ main {
     flex: 1;
 }
 
+.resort-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .resort-description {
     margin-top: 1em;
 }
@@ -121,6 +128,11 @@ main {
 #pagination button:disabled {
     background: #ccc;
     cursor: not-allowed;
+}
+
+#page-info {
+    margin-left: 1em;
+    font-size: 1em;
 }
 
 @media (max-width: 600px) {
