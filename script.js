@@ -33,7 +33,11 @@ function displayResorts() {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
 
-        const location = "Baa Atoll, 06080, Maldives";
+        // Extracting location information
+        const atoll = resort.Atoll || "Unknown Atoll";
+        const pinCode = resort.PinCode || "Unknown PinCode";
+        const country = resort.Country || "Unknown Country";
+        const location = `${atoll}, ${pinCode}, ${country}`;
 
         resortElement.innerHTML = `
             <img src="${resort.Images[0]}" alt="${resort.Name}">
