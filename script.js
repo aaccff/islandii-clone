@@ -36,7 +36,7 @@ function displayResorts() {
             <img src="${resort.Images[0]}" alt="${resort.Name}">
             <div class="resort-details">
                 <div class="resort-header">
-                    <h2>${resort.Name}</h2>
+                    <h2 class="resort-name">${resort.Name}</h2>
                     <p class="review">Review: ${resort.Review}</p>
                 </div>
                 <div class="resort-location">
@@ -53,7 +53,20 @@ function displayResorts() {
         container.appendChild(resortElement);
     });
 
+    adjustFontSizes();
     updatePaginationButtons();
+}
+
+function adjustFontSizes() {
+    const resortNames = document.querySelectorAll('.resort-name');
+    resortNames.forEach(name => {
+        let fontSize = 24; // Start with a base font size
+        name.style.fontSize = `${fontSize}px`;
+        while (name.scrollWidth > name.clientWidth && fontSize > 12) { // Reduce the font size until it fits or until a minimum font size is reached
+            fontSize--;
+            name.style.fontSize = `${fontSize}px`;
+        }
+    });
 }
 
 function showMoreDetails(index) {
