@@ -45,7 +45,7 @@ main {
 }
 
 .resort img {
-    width: 200px;
+    flex: 0.3; /* Takes up less than one third of the container */
     height: 150px;
     object-fit: cover;
     border-radius: 5px;
@@ -92,10 +92,10 @@ main {
 }
 
 .resort-details {
+    flex: 0.7; /* Takes up more than two thirds of the container */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex: 1;
 }
 
 .resort-header {
@@ -142,7 +142,7 @@ main {
         line-height: 1.4em; /* Adjusted line height for resort name */
     }
     .resort img {
-        width: 100%;
+        flex: 1; /* Takes up the full width of the container on small screens */
         height: auto;
         margin-right: 0;
     }
@@ -152,6 +152,7 @@ main {
         padding: 1em;
     }
     .resort-details {
+        flex: 1; /* Takes up the full width of the container on small screens */
         margin-top: 1em;
     }
     header {
