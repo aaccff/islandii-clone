@@ -32,7 +32,7 @@ main {
 
 .resort {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Ensures image is on the left and text on the right */
     background: white;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -61,10 +61,11 @@ main {
 .rating {
     color: #FFD700;
     margin: 0;
+    font-size: 12px; /* Font size for rating */
 }
 
 .resort-location {
-    font-size: 9px;
+    font-size: 9px; /* Font size for location */
     color: #004d99;
     margin: 0;
 }
@@ -81,6 +82,7 @@ main {
 .review {
     color: green;
     margin: 0;
+    font-size: 12px; /* Font size for review */
 }
 
 .resort p {
@@ -133,21 +135,19 @@ main {
 
 @media (max-width: 500px) {
     .resort {
-        flex-direction: column; /* Stack image and details vertically on mobile */
-        align-items: center; /* Center align the content */
+        flex-direction: row; /* Ensures image is on the left and text on the right for smaller screens as well */
+        align-items: flex-start; /* Aligns the image with the heading */
         padding: 1em;
     }
 
     .resort img {
         width: 100px; /* Adjust image size for mobile */
         height: 100px;
-        margin-right: 0;
-        margin-bottom: 1em; /* Add space below the image */
+        margin-right: 1em; /* Space between image and text */
     }
 
     .resort-details {
-        align-items: center; /* Center align the details */
-        margin-top: 0;
+        margin-top: 0; /* Removes the margin at the top */
     }
 
     header {
