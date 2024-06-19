@@ -32,32 +32,42 @@ main {
 }
 
 .resort {
-    /* ... existing styles ... */
     display: flex;
     flex-direction: row;
     justify-content: space-between; /* Aligns items evenly on the main axis */
-    /* ... existing styles ... */
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 1.618em 0; /* Golden ratio */
+    padding: 1.618em; /* Golden ratio */
+    width: 100%;
+    max-width: 1200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
 }
 
 .resort img {
-    /* ... existing styles ... */
+    flex: 0.3; /* Takes up less than one third of the container */
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 1.618em; /* Golden ratio */
     max-width: 150px; /* Set the maximum width of the image */
-    /* ... existing styles ... */
 }
 
-.resort-details {
-    /* ... existing styles ... */
-    flex: 0; /* Takes up the remaining space */
-    /* ... existing styles ... */
+.resort H6 {
+    margin: 0;
+    font-size: 1.000em; /* Golden ratio */
+    font-weight: normal;
 }
 
 .rating {
     color: #FFD700;
-    margin-top: 0em; /* Golden ratio */
+    margin-top: 0.618em; /* Golden ratio */
 }
 
 .resort-location {
-    font-size: 0em;
+    font-size: 1em;
     color: #004d99;
     margin: 0;
 }
@@ -73,7 +83,7 @@ main {
 
 .review {
     color: green;
-    margin-top: 0em; /* Golden ratio */
+    margin-top: 0.618em; /* Golden ratio */
 }
 
 .resort p {
@@ -85,10 +95,10 @@ main {
 }
 
 .resort-details {
-    flex: 0.7; /* Takes up more than two thirds of the container */
+    flex: 1; /* Takes up the remaining space */
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    align-items: flex-start;
 }
 
 .resort-header {
@@ -96,33 +106,7 @@ main {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-}
-
-#pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1.618em 0; /* Golden ratio */
-}
-
-#pagination button {
-    padding: 0.618em 1.618em; /* Golden ratio */
-    margin: 0 1.618em; /* Golden ratio */
-    background: #004d99;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#pagination button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-}
-
-#page-info {
-    margin-left: 1.618em; /* Golden ratio */
-    font-size: 1em;
+    margin-bottom: 1em; /* Add a bottom margin to separate the header from the details */
 }
 
 @media (max-width: 500px) {
@@ -136,7 +120,7 @@ main {
 
     .resort img {
         flex: 0.3; /* Adjust the flex to a smaller value */
-        max-width: 100px; /* Adjust as needed */
+        max-width: 100px; /* Adjust the maximum width of the image */
         margin-right: 1em;
     }
 
@@ -147,7 +131,7 @@ main {
     }
 
     .resort-details {
-        flex: 0.1; /* Adjust the flex to take up the remaining space */
+        flex: 0.7; /* Adjust the flex to take up the remaining space */
         margin-top: 0; /* Removes the margin at the top */
     }
 
