@@ -51,10 +51,6 @@ main {
 
 .resort h2 {
     margin: 0.5em 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: calc(100% - 170px); /* Adjust width to ensure text does not overlap with image */
 }
 
 .resort-location {
@@ -150,10 +146,6 @@ main {
         height: 100px;
         margin-right: 1em;
     }
-
-    .resort h2 {
-        width: calc(100% - 120px); /* Adjust width for smaller screens */
-    }
 }
 
 @media (min-width: 601px) {
@@ -165,9 +157,5 @@ main {
         width: 150px;
         height: 150px;
         margin-right: 1em;
-    }
-
-    .resort h2 {
-        width: calc(100% - 170px); /* Adjust width for larger screens */
     }
 }
