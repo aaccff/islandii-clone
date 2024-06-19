@@ -15,7 +15,7 @@ header {
     padding: 1.618em; /* Golden ratio */
     background: #004d99;
     color: white;
-    text-align: center;
+    text-align: start;
 }
 
 #jsonFile {
@@ -25,7 +25,7 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     padding: 1.618em; /* Golden ratio */
     width: 100%;
 }
@@ -52,9 +52,9 @@ main {
     margin-right: 1.618em; /* Golden ratio */
 }
 
-.resort h5 {
+.resort H6 {
     margin: 0;
-    font-size: 1.018em; /* Golden ratio */
+    font-size: 1.000em; /* Golden ratio */
     font-weight: normal;
 }
 
@@ -95,7 +95,7 @@ main {
     flex: 0.7; /* Takes up more than two thirds of the container */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
 }
 
 .resort-header {
