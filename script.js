@@ -30,8 +30,6 @@ function displayResorts() {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
 
-        const location = "Baa Atoll, 06080, Maldives";
-
         resortElement.innerHTML = `
             <img src="${resort.Images[0]}" alt="${resort.Name}">
             <div class="resort-details">
@@ -40,7 +38,7 @@ function displayResorts() {
                     <p class="review">Review: ${resort.Review}</p>
                 </div>
                 <div class="resort-location">
-                    <a href="${resort['Google Map Link']}" target="_blank">${location}</a>
+                    <a href="${resort['Google Map Link']}" target="_blank">${resort.Location}</a>
                 </div>
                 <div class="resort-rating">
                     <p>Rating: ${resort.Rating}</p>
