@@ -54,7 +54,7 @@ main {
 
 .resort h2 {
     margin: 0;
-    font-size: 18px; /* Font size for the resort name */
+    font-size: 15px; /* Font size for the resort name */
     font-weight: normal; /* Font weight for the resort name */
 }
 
@@ -64,7 +64,7 @@ main {
 }
 
 .resort-location {
-    font-size: 1em;
+    font-size: 9px;
     color: #004d99;
     margin: 0;
 }
