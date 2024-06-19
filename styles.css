@@ -134,14 +134,43 @@ main {
 
 @media (max-width: 600px) {
     body, p, a {
-        font-size: 0.3em; /* Further reduced for smaller screens */
+        font-size: 1em; /* Adjusted for smaller screens */
         line-height: 1.4em; /* Adjusted line height */
     }
     .resort h4 {
-        font-size: 0.8em; /* Adjusted for resort name */
+        font-size: 1.2em; /* Adjusted for resort name */
         line-height: 1.4em; /* Adjusted line height for resort name */
     }
+    .resort img {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+    }
     .resort {
+        flex-direction: column;
         align-items: flex-start; /* Aligns the image with the heading */
+        padding: 1em;
+    }
+    .resort-details {
+        margin-top: 1em;
+    }
+    header {
+        padding: 1em;
+    }
+    main {
+        padding: 1em;
+    }
+    #jsonFile {
+        margin-top: 1em;
+    }
+    .resort, #pagination {
+        margin: 1em 0;
+    }
+    #pagination button {
+        padding: 0.5em 1em;
+        margin: 0 0.5em;
+    }
+    #page-info {
+        margin-left: 1em;
     }
 }
