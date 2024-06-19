@@ -52,15 +52,15 @@ main {
     margin-right: 1.618em; /* Golden ratio */
 }
 
-.resort H6 {
+.resort h2 {
     margin: 0;
-    font-size: 1.000em; /* Golden ratio */
-    font-weight: normal;
+    font-size: 1.5em; /* Adjust font size for the resort name */
+    font-weight: bold;
 }
 
 .rating {
     color: #FFD700;
-    margin-top: 0.618em; /* Golden ratio */
+    margin: 0;
 }
 
 .resort-location {
@@ -80,7 +80,7 @@ main {
 
 .review {
     color: green;
-    margin-top: 0.618em; /* Golden ratio */
+    margin: 0;
 }
 
 .resort p {
@@ -131,43 +131,51 @@ main {
     margin-left: 1.618em; /* Golden ratio */
     font-size: 1em;
 }
+
 @media (max-width: 500px) {
-    body, p, a {
-        /* ... existing styles ... */
-    }
-    .resort h4 {
-        /* ... existing styles ... */
-    }
-    .resort img {
-        flex: 0.3; /* Adjust the flex to a smaller value */
-        max-width: 100px; /* Adjust as needed */
-        margin-right: 1em;
-    }
     .resort {
         flex-direction: row; /* Aligns image and details side by side */
         align-items: flex-start; /* Aligns the image with the heading */
         padding: 1em;
     }
+
+    .resort img {
+        flex: 0.3; /* Adjust the flex to a smaller value */
+        width: 100px; /* Adjust image size for mobile */
+        height: 100px;
+        margin-right: 1em;
+    }
+
     .resort-details {
         flex: 0.7; /* Adjust the flex to take up the remaining space */
         margin-top: 0; /* Removes the margin at the top */
     }
+
+    .resort-header {
+        align-items: flex-start; /* Ensure text aligns properly next to the image */
+    }
+
     header {
         padding: 1em;
     }
+
     main {
         padding: 1em;
     }
+
     #jsonFile {
         margin-top: 1em;
     }
+
     .resort, #pagination {
         margin: 1em 0;
     }
+
     #pagination button {
         padding: 0.5em 1em;
         margin: 0 0.5em;
     }
+
     #page-info {
         margin-left: 1em;
     }
