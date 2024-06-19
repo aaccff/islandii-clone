@@ -54,8 +54,8 @@ main {
 
 .resort h4 {
     margin: 0;
-    font-size: 1.618em; /* Golden ratio */
-    font-weight: bold;
+    font-size: 1.218em; /* Golden ratio */
+    font-weight: normal;
 }
 
 .rating {
