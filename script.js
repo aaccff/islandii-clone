@@ -44,7 +44,6 @@ function displayResorts() {
                     <p>Rating: ${resort.Rating}</p>
                 </div>
                 <p class="resort-description">${resort.Description.substring(0, 100)}...</p>
-                <button onclick="showMoreDetails(${index})">More Details</button>
             </div>
         `;
 
@@ -65,18 +64,6 @@ function adjustFontSizes() {
             name.style.fontSize = `${fontSize}px`;
         }
     });
-}
-
-function showMoreDetails(index) {
-    const resort = resorts[index];
-    alert(`
-        Name: ${resort.Name}
-        Location: ${resort.Location}
-        Description: ${resort.Description}
-        Rating: ${resort.Rating} (${resort['Total Number of Reviews']})
-        Review: ${resort.Review}
-        Rooms: ${resort.Rooms.map(room => room['Villa Name']).join(', ')}
-    `);
 }
 
 function prevPage() {
