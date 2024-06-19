@@ -45,7 +45,7 @@ main {
 }
 
 .resort img {
-    flex: 0.3; /* Takes up less than one third of the container */
+    width: 200px; /* Fixed width for the image */
     height: 150px;
     object-fit: cover;
     border-radius: 5px;
@@ -54,8 +54,8 @@ main {
 
 .resort h2 {
     margin: 0;
-    font-size: 1.5em; /* Adjust font size for the resort name */
-    font-weight: bold;
+    font-size: 18px; /* Font size for the resort name */
+    font-weight: normal; /* Font weight for the resort name */
 }
 
 .rating {
@@ -92,7 +92,6 @@ main {
 }
 
 .resort-details {
-    flex: 0.7; /* Takes up more than two thirds of the container */
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -134,25 +133,21 @@ main {
 
 @media (max-width: 500px) {
     .resort {
-        flex-direction: row; /* Aligns image and details side by side */
-        align-items: flex-start; /* Aligns the image with the heading */
+        flex-direction: column; /* Stack image and details vertically on mobile */
+        align-items: center; /* Center align the content */
         padding: 1em;
     }
 
     .resort img {
-        flex: 0.3; /* Adjust the flex to a smaller value */
         width: 100px; /* Adjust image size for mobile */
         height: 100px;
-        margin-right: 1em;
+        margin-right: 0;
+        margin-bottom: 1em; /* Add space below the image */
     }
 
     .resort-details {
-        flex: 0.7; /* Adjust the flex to take up the remaining space */
-        margin-top: 0; /* Removes the margin at the top */
-    }
-
-    .resort-header {
-        align-items: flex-start; /* Ensure text aligns properly next to the image */
+        align-items: center; /* Center align the details */
+        margin-top: 0;
     }
 
     header {
