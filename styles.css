@@ -131,29 +131,26 @@ main {
     margin-left: 1.618em; /* Golden ratio */
     font-size: 1em;
 }
-
 @media (max-width: 600px) {
     body, p, a {
-        font-size: 1em; /* Adjusted for smaller screens */
-        line-height: 1.4em; /* Adjusted line height */
+        /* ... existing styles ... */
     }
     .resort h4 {
-        font-size: 1.2em; /* Adjusted for resort name */
-        line-height: 1.4em; /* Adjusted line height for resort name */
+        /* ... existing styles ... */
     }
     .resort img {
-        flex: 1; /* Takes up the full width of the container on small screens */
-        height: auto;
-        margin-right: 0;
+        flex: 0.3; /* Adjust the flex to a smaller value */
+        max-width: 100px; /* Adjust as needed */
+        margin-right: 1em;
     }
     .resort {
-        flex-direction: column;
+        flex-direction: row; /* Aligns image and details side by side */
         align-items: flex-start; /* Aligns the image with the heading */
         padding: 1em;
     }
     .resort-details {
-        flex: 1; /* Takes up the full width of the container on small screens */
-        margin-top: 1em;
+        flex: 0.7; /* Adjust the flex to take up the remaining space */
+        margin-top: 0; /* Removes the margin at the top */
     }
     header {
         padding: 1em;
