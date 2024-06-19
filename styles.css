@@ -1,162 +1,22 @@
-/* styles.css */
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 1.618; /* Golden ratio */
-}
-
-header {
-    width: 100%;
-    padding: 1.618em; /* Golden ratio */
-    background: #004d99;
-    color: white;
-    text-align: start;
-}
-
-#jsonFile {
-    margin-top: 1.618em; /* Golden ratio */
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.618em; /* Golden ratio */
-    width: 100%;
-}
+/* ... existing styles ... */
 
 .resort {
+    /* ... existing styles ... */
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* Aligns items evenly on the main axis */
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin: 1.618em 0; /* Golden ratio */
-    padding: 1.618em; /* Golden ratio */
-    width: 100%;
-    max-width: 1200px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    justify-content: space-between;
+    /* ... existing styles ... */
 }
 
 .resort img {
-    flex: 0.3; /* Takes up less than one third of the container */
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-right: 1.618em; /* Golden ratio */
+    /* ... existing styles ... */
     max-width: 150px; /* Set the maximum width of the image */
-}
-
-.resort H6 {
-    margin: 0;
-    font-size: 1.000em; /* Golden ratio */
-    font-weight: normal;
-}
-
-.rating {
-    color: #FFD700;
-    margin-top: 0.618em; /* Golden ratio */
-}
-
-.resort-location {
-    font-size: 1em;
-    color: #004d99;
-    margin: 0;
-}
-
-.resort-location a {
-    color: #004d99;
-    text-decoration: none;
-}
-
-.resort-location a:hover {
-    text-decoration: underline;
-}
-
-.review {
-    color: green;
-    margin-top: 0.618em; /* Golden ratio */
-}
-
-.resort p {
-    color: #666;
-}
-
-.resort:hover {
-    transform: scale(1.02);
-}
-
-.resort-details {
-    flex: 1; /* Takes up the remaining space */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    /* ... existing styles ... */
 }
 
 .resort-header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
+    /* ... existing styles ... */
     margin-bottom: 1em; /* Add a bottom margin to separate the header from the details */
 }
 
-@media (max-width: 500px) {
-    body, p, a {
-        /* ... existing styles ... */
-    }
-
-    .resort h4 {
-        /* ... existing styles ... */
-    }
-
-    .resort img {
-        flex: 0.3; /* Adjust the flex to a smaller value */
-        max-width: 100px; /* Adjust the maximum width of the image */
-        margin-right: 1em;
-    }
-
-    .resort {
-        flex-direction: row; /* Aligns image and details side by side */
-        align-items: flex-start; /* Aligns the image with the heading */
-        padding: 1em;
-    }
-
-    .resort-details {
-        flex: 0.7; /* Adjust the flex to take up the remaining space */
-        margin-top: 0; /* Removes the margin at the top */
-    }
-
-    header {
-        padding: 1em;
-    }
-
-    main {
-        padding: 1em;
-    }
-
-    #jsonFile {
-        margin-top: 1em;
-    }
-
-    .resort, #pagination {
-        margin: 1em 0;
-    }
-
-    #pagination button {
-        padding: 0.5em 1em;
-        margin: 0 0.5em;
-    }
-
-    #page-info {
-        margin-left: 1em;
-    }
-}
+/* ... existing styles ... */
