@@ -43,7 +43,6 @@ function displayResorts() {
                 <div class="resort-rating">
                     <p>Rating: ${resort.Rating}</p>
                 </div>
-                <p class="resort-description">${resort.Description.substring(0, 100)}...</p>
             </div>
         `;
 
