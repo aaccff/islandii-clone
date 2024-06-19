@@ -52,7 +52,7 @@ main {
 }
 
 .resort h2 {
-    margin: 0.5em 0;
+    margin: 0;
     font-size: 1.5em; /* Adjust font size for the resort name */
     font-weight: bold;
 }
@@ -65,7 +65,7 @@ main {
 .resort-location {
     font-size: 1em; /* Adjust font size for location */
     color: #004d99;
-    margin-top: 0.5em; /* Add space below the resort name */
+    margin: 0; /* Remove margin to eliminate space below the resort name */
 }
 
 .resort-location a {
