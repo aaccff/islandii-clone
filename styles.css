@@ -131,3 +131,9 @@ main {
     margin-left: 1.618em; /* Golden ratio */
     font-size: 1em;
 }
+
+@media (max-width: 600px) {
+    .resort h2 {
+        font-size: 1em; /* Adjusted for smaller screens */
+    }
+}
