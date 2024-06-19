@@ -52,7 +52,7 @@ main {
     margin-right: 1.618em; /* Golden ratio */
 }
 
-.resort h2 {
+.resort h4 {
     margin: 0;
     font-size: 1.618em; /* Golden ratio */
     font-weight: bold;
@@ -137,8 +137,8 @@ main {
         font-size: 0.4em; /* Further reduced for smaller screens */
         line-height: 1.2em; /* Adjusted line height */
     }
-    .resort h2 {
-        font-size: 1em; /* Further reduced for resort name */
+    .resort h4 {
+        font-size: 0.8em; /* Adjusted for resort name */
         line-height: 1.2em; /* Adjusted line height for resort name */
     }
     .resort {
