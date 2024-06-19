@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f5f5f5; /* Background color similar to the example */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,18 +32,19 @@ main {
 .resort {
     display: flex;
     flex-direction: row;
+    background: white; /* Background color similar to the example */
     border: 1px solid #ddd;
     border-radius: 5px;
     margin: 1em 0;
     padding: 1em;
     width: 100%;
-    max-width: 800px;
+    max-width: 1200px; /* Adjust to match the example container width */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
 }
 
 .resort img {
-    width: 150px;
+    width: 200px; /* Adjust to match the example image size */
     height: 150px;
     object-fit: cover;
     border-radius: 5px;
@@ -51,6 +53,8 @@ main {
 
 .resort h2 {
     margin: 0.5em 0;
+    font-size: 1.5em; /* Adjust font size for the resort name */
+    font-weight: bold;
 }
 
 .rating {
@@ -59,7 +63,7 @@ main {
 }
 
 .resort-location {
-    font-size: 0.9em;
+    font-size: 1em; /* Adjust font size for location */
     color: #004d99;
     margin-top: 0.5em; /* Add space below the resort name */
 }
@@ -73,17 +77,6 @@ main {
     text-decoration: underline;
 }
 
-.resort-rating-review {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.resort-rating-review p {
-    margin: 0;
-}
-
 .review {
     color: green;
     margin-top: 0.5em;
@@ -94,13 +87,13 @@ main {
 }
 
 .resort:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .resort-details {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     flex: 1;
 }
 
@@ -140,14 +133,23 @@ main {
 
 @media (max-width: 600px) {
     .resort {
-        flex-direction: row;
-        align-items: flex-start;
+        flex-direction: column;
+        align-items: center;
     }
 
     .resort img {
-        width: 100px;
-        height: 100px;
-        margin-right: 1em;
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 1em;
+    }
+
+    .resort-header {
+        align-items: center;
+    }
+
+    .resort-details {
+        align-items: center;
     }
 }
 
@@ -157,7 +159,7 @@ main {
     }
 
     .resort img {
-        width: 150px;
+        width: 200px;
         height: 150px;
         margin-right: 1em;
     }
