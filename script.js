@@ -18,7 +18,14 @@ function loadJSON(event) {
     reader.readAsText(file);
 }
 
-function displayResorts() {
+async function fetchGoogleRating(placeID) {
+    const apiKey = 'YOUR_GOOGLE_PLACES_API_KEY';
+    const response = await fetch(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeID}&key=${apiKey}`);
+    const data = await response.json();
+    return data.result.rating;
+}
+
+async function displayResorts() {
     const container = document.getElementById('resorts-container');
     container.innerHTML = '';
 
@@ -26,9 +33,11 @@ function displayResorts() {
     const end = start + itemsPerPage;
     const paginatedResorts = resorts.slice(start, end);
 
-    paginatedResorts.forEach((resort, index) => {
+    for (let resort of paginatedResorts) {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
+
+        const googleRating = await fetchGoogleRating(resort.GooglePlaceID);
 
         resortElement.innerHTML = `
             <img src="${resort.Images[0]}" alt="${resort.Name}">
@@ -36,9 +45,10 @@ function displayResorts() {
                 <div class="resort-header">
                     <h2 class="resort-name">${resort.Name}</h2>
                     <p class="review">Review: ${resort.Review}</p>
+                    <p class="google-rating">Google Rating: ${googleRating} ⭐</p>
                 </div>
                 <div class="resort-location">
-                    <a href="${resort['Google Map Link']}" target="_blank">${resort.Location}</a>
+                    <a href="${resort.GoogleMapLink}" target="_blank">${resort.Location}</a>
                 </div>
                 <div class="resort-rating">
                     <p>Rating: ${resort.Rating}</p>
@@ -47,7 +57,7 @@ function displayResorts() {
         `;
 
         container.appendChild(resortElement);
-    });
+    }
 
     adjustFontSizes();
     updatePaginationButtons();
