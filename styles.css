@@ -104,10 +104,6 @@ main {
     width: 100%;
 }
 
-.resort-description {
-    margin-top: 1em;
-}
-
 #pagination {
     display: flex;
     justify-content: center;
