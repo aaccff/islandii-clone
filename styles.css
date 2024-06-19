@@ -134,12 +134,12 @@ main {
 
 @media (max-width: 600px) {
     body, p, a {
-        font-size: 0.4em; /* Further reduced for smaller screens */
-        line-height: 1.2em; /* Adjusted line height */
+        font-size: 0.3em; /* Further reduced for smaller screens */
+        line-height: 1.4em; /* Adjusted line height */
     }
     .resort h4 {
         font-size: 0.8em; /* Adjusted for resort name */
-        line-height: 1.2em; /* Adjusted line height for resort name */
+        line-height: 1.4em; /* Adjusted line height for resort name */
     }
     .resort {
         align-items: flex-start; /* Aligns the image with the heading */
