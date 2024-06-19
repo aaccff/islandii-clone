@@ -53,7 +53,7 @@ main {
 
 .rating {
     color: #FFD700;
-    margin-top: 0.618em; /* Golden ratio */
+    margin-top: 0;
 }
 
 .resort-location {
@@ -73,7 +73,7 @@ main {
 
 .review {
     color: green;
-    margin-top: 0.618em; /* Golden ratio */
+    margin-top: 0em; /* Golden ratio */
 }
 
 .resort p {
@@ -148,7 +148,7 @@ main {
     }
 
     .resort-details {
-        flex: 0.7; /* Adjust the flex to take up the remaining space */
+        flex: 0; /* Adjust the flex to take up the remaining space */
         margin-top: 0; /* Removes the margin at the top */
     }
 
