@@ -32,31 +32,23 @@ main {
 }
 
 .resort {
+    /* ... existing styles ... */
     display: flex;
     flex-direction: row;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin: 1.618em 0; /* Golden ratio */
-    padding: 1.618em; /* Golden ratio */
-    width: 100%;
-    max-width: 1200px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    justify-content: space-between; /* Aligns items evenly on the main axis */
+    /* ... existing styles ... */
 }
 
 .resort img {
-    flex: 0.3; /* Takes up less than one third of the container */
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-right: 1.618em; /* Golden ratio */
+    /* ... existing styles ... */
+    max-width: 150px; /* Set the maximum width of the image */
+    /* ... existing styles ... */
 }
 
-.resort H6 {
-    margin: 0;
-    font-size: 1.000em; /* Golden ratio */
-    font-weight: normal;
+.resort-details {
+    /* ... existing styles ... */
+    flex: 1; /* Takes up the remaining space */
+    /* ... existing styles ... */
 }
 
 .rating {
