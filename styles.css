@@ -59,7 +59,6 @@ main {
 }
 
 .rating {
-    color: white;
     background-color: #00008B; /* Deep blue background */
     margin: 0;
     font-size: 9px; /* Font size for rating */
@@ -67,33 +66,37 @@ main {
     border-radius: 3px;
     display: inline-block; /* Ensure it stays in line with review */
     font-weight: bold; /* Font weight for rating */
+    color: white; /* White text color */
 }
 
 .resort-location {
     font-size: 9px; /* Font size for location */
-    color: #004d99;
+    color: red; /* Red text color */
+    font-weight: bold; /* Bold text */
     margin: 0;
+    letter-spacing: 0.5px; /* Slight letter spacing */
 }
 
 .resort-location a {
-    color: #004d99;
+    color: red; /* Red text color for link */
     text-decoration: none;
 }
 
-.resort-location a:hover {
-    text-decoration: underline;
-}
-
 .review {
-    color: white;
     background-color: green; /* Green background */
     margin: 0;
     font-size: 9px; /* Font size for review */
     padding: 2px 5px; /* Padding for better appearance */
     border-radius: 3px;
     display: inline-block; /* Ensure it stays in line with rating */
-    margin-right: 5px; /* Space between review and rating */
     font-weight: bold; /* Font weight for review */
+    color: white; /* White text color */
+    margin-right: 5px; /* Space between review and rating */
+}
+
+.rating-review {
+    display: flex;
+    align-items: center;
 }
 
 .resort p {
