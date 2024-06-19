@@ -84,18 +84,19 @@ main {
     transform: scale(1.02);
 }
 
-.resort-details {
-    flex: 0.7; /* Takes up more than two thirds of the container */
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-
 .resort-header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+    margin-bottom: 1em; /* Add a bottom margin to separate the header from the details */
+}
+
+.resort-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1; /* Takes up the remaining space */
 }
 
 #pagination {
