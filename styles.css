@@ -47,17 +47,17 @@ main {
 
 .resort-details {
     /* ... existing styles ... */
-    flex: 1; /* Takes up the remaining space */
+    flex: 0; /* Takes up the remaining space */
     /* ... existing styles ... */
 }
 
 .rating {
     color: #FFD700;
-    margin-top: 0;
+    margin-top: 0em; /* Golden ratio */
 }
 
 .resort-location {
-    font-size: 1em;
+    font-size: 0em;
     color: #004d99;
     margin: 0;
 }
@@ -84,19 +84,18 @@ main {
     transform: scale(1.02);
 }
 
+.resort-details {
+    flex: 0.7; /* Takes up more than two thirds of the container */
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
 .resort-header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    margin-bottom: 1em; /* Add a bottom margin to separate the header from the details */
-}
-
-.resort-details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex: 1; /* Takes up the remaining space */
 }
 
 #pagination {
@@ -148,7 +147,7 @@ main {
     }
 
     .resort-details {
-        flex: 0; /* Adjust the flex to take up the remaining space */
+        flex: 0.1; /* Adjust the flex to take up the remaining space */
         margin-top: 0; /* Removes the margin at the top */
     }
 
