@@ -35,13 +35,11 @@ function displayResorts() {
             <div class="resort-details">
                 <div class="resort-header">
                     <h2 class="resort-name">${resort.Name}</h2>
+                    <div class="resort-location">
+                        <a href="${resort.GoogleMapLink}" target="_blank">${resort.Location}</a>
+                    </div>
                     <p class="review">Review: ${resort.Review}</p>
-                </div>
-                <div class="resort-location">
-                    <a href="${resort['Google Map Link']}" target="_blank">${resort.Location}</a>
-                </div>
-                <div class="resort-rating">
-                    <p>Rating: ${resort.Rating}</p>
+                    <p class="rating">Rating: ${resort.Rating} ⭐</p>
                 </div>
             </div>
         `;
