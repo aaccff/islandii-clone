@@ -1,61 +1,100 @@
-// Fetch the JSON data from the specified URL
-fetch('resorts.json')
-    .then(response => response.json())
-    .then(data => {
-        // Get the resorts container element
-        const resortsContainer = document.getElementById('resorts-container');
+let currentPage = 1;
+const itemsPerPage = 15;
+let resorts = [];
 
-        // Iterate through the resorts data and create HTML elements for each resort
-        data.resorts.forEach(resort => {
-            const resortElement = document.createElement('div');
-            resortElement.classList.add('resort');
+document.getElementById('jsonFile').addEventListener('change', loadJSON);
 
-            const image = document.createElement('img');
-            image.src = resort.image;
-            image.alt = resort.name;
-            resortElement.appendChild(image);
+function loadJSON(event) {
+    const file = event.target.files[0];
+    if (!file) return;
 
-            const resortHeader = document.createElement('div');
-            resortHeader.classList.add('resort-header');
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        resorts = JSON.parse(e.target.result);
+        localStorage.setItem('resorts', JSON.stringify(resorts));
+        displayResorts();
+        updatePageInfo();
+    };
+    reader.readAsText(file);
+}
 
-            const resortName = document.createElement('h6');
-            resortName.textContent = resort.name;
-            resortHeader.appendChild(resortName);
+function displayResorts() {
+    const container = document.getElementById('resorts-container');
+    container.innerHTML = '';
 
-            const rating = document.createElement('div');
-            rating.classList.add('rating');
-            rating.textContent = `Rating: ${resort.rating}`;
-            resortHeader.appendChild(rating);
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedResorts = resorts.slice(start, end);
 
-            const resortLocation = document.createElement('div');
-            resortLocation.classList.add('resort-location');
+    paginatedResorts.forEach((resort, index) => {
+        const resortElement = document.createElement('div');
+        resortElement.className = 'resort';
 
-            const locationLink = document.createElement('a');
-            locationLink.href = resort.location;
-            locationLink.target = '_blank';
-            locationLink.textContent = resort.location;
-            resortLocation.appendChild(locationLink);
+        resortElement.innerHTML = `
+            <img src="${resort.Images[0]}" alt="${resort.Name}">
+            <div class="resort-details">
+                <div class="resort-header">
+                    <h2 class="resort-name">${resort.Name}</h2>
+                    <div class="resort-location">
+                        <a href="${resort.GoogleMapLink}" target="_blank">${resort.Location}</a>
+                    </div>
+                    <p class="review">Review: ${resort.Review}</p>
+                    <p class="rating">Rating: ${resort.Rating} ⭐</p>
+                </div>
+            </div>
+        `;
 
-            resortHeader.appendChild(resortLocation);
-            resortElement.appendChild(resortHeader);
-
-            const resortDetails = document.createElement('div');
-            resortDetails.classList.add('resort-details');
-
-            const description = document.createElement('p');
-            description.textContent = resort.description;
-            resortDetails.appendChild(description);
-
-            const review = document.createElement('div');
-            review.classList.add('review');
-            review.textContent = `Review: ${resort.review}`;
-            resortDetails.appendChild(review);
-
-            resortElement.appendChild(resortDetails);
-
-            resortsContainer.appendChild(resortElement);
-        });
-    })
-    .catch(error => {
-        console.error('Error fetching JSON data:', error);
+        container.appendChild(resortElement);
     });
+
+    adjustFontSizes();
+    updatePaginationButtons();
+}
+
+function adjustFontSizes() {
+    const resortNames = document.querySelectorAll('.resort-name');
+    resortNames.forEach(name => {
+        let fontSize = 24; // Start with a base font size
+        name.style.fontSize = `${fontSize}px`;
+        while (name.scrollWidth > name.clientWidth && fontSize > 12) { // Reduce the font size until it fits or until a minimum font size is reached
+            fontSize--;
+            name.style.fontSize = `${fontSize}px`;
+        }
+    });
+}
+
+function prevPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        displayResorts();
+        updatePageInfo();
+    }
+}
+
+function nextPage() {
+    if ((currentPage * itemsPerPage) < resorts.length) {
+        currentPage++;
+        displayResorts();
+        updatePageInfo();
+    }
+}
+
+function updatePaginationButtons() {
+    document.getElementById('prev').disabled = currentPage === 1;
+    document.getElementById('next').disabled = (currentPage * itemsPerPage) >= resorts.length;
+}
+
+function updatePageInfo() {
+    const pageInfo = document.getElementById('page-info');
+    const totalPages = Math.ceil(resorts.length / itemsPerPage);
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const storedResorts = localStorage.getItem('resorts');
+    if (storedResorts) {
+        resorts = JSON.parse(storedResorts);
+        displayResorts();
+        updatePageInfo();
+    }
+});
