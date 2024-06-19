@@ -1,6 +1,6 @@
 /* styles.css */
 body {
-    font-family: Arial, sans-serif;
+    font-family: sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
@@ -59,9 +59,13 @@ main {
 }
 
 .rating {
-    color: #FFD700;
+    color: white;
+    background-color: #00008B; /* Deep blue background */
     margin: 0;
-    font-size: 12px; /* Font size for rating */
+    font-size: 9px; /* Font size for rating */
+    padding: 2px 5px; /* Padding for better appearance */
+    border-radius: 3px;
+    display: inline-block; /* Ensure it stays in line with review */
 }
 
 .resort-location {
@@ -80,9 +84,14 @@ main {
 }
 
 .review {
-    color: green;
+    color: white;
+    background-color: green; /* Green background */
     margin: 0;
-    font-size: 12px; /* Font size for review */
+    font-size: 9px; /* Font size for review */
+    padding: 2px 5px; /* Padding for better appearance */
+    border-radius: 3px;
+    display: inline-block; /* Ensure it stays in line with rating */
+    margin-right: 5px; /* Space between review and rating */
 }
 
 .resort p {
