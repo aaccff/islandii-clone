@@ -12,7 +12,24 @@
         <input type="file" id="jsonFile" accept=".json">
     </header>
     <main>
-        <div id="resorts-container"></div>
+        <!-- Directly add the resort elements within the main container -->
+        <div class="resort">
+            <img src="image-url" alt="Resort Image">
+            <div class="resort-header">
+                <h6>Resort Name</h6>
+                <div class="rating">Rating: 4.5/5</div>
+                <div class="resort-location">
+                    <a href="resort-url" target="_blank">Resort Location</a>
+                </div>
+            </div>
+            <div class="resort-details">
+                <p>Resort Description</p>
+                <div class="review">Review: Excellent</div>
+            </div>
+        </div>
+        <!-- Repeat the above resort element for each resort -->
+
+        <!-- Pagination buttons -->
         <div id="pagination">
             <button id="prevButton" onclick="prevPage()">Previous</button>
             <span id="page-info"></span>
