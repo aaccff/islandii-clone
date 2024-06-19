@@ -138,6 +138,10 @@ main {
         line-height: 1.2em; /* Adjusted line height */
     }
     .resort h2 {
-        font-size: 1.2em; /* Adjusted for resort name */
+        font-size: 1em; /* Further reduced for resort name */
+        line-height: 1.2em; /* Adjusted line height for resort name */
+    }
+    .resort {
+        align-items: flex-start; /* Aligns the image with the heading */
     }
 }
