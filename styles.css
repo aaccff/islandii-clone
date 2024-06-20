@@ -1,6 +1,7 @@
-/* styles.css */
+/* Base styles for larger screens */
 body {
     font-family: sans-serif;
+    font-size: 16px; /* Base font size for larger screens */
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
@@ -54,14 +55,14 @@ main {
 
 .resort h2 {
     margin: 0;
-    font-size: 12px; /* Font size for the resort name */
+    font-size: 16px; /* Font size for the resort name */
     font-weight: bold; /* Font weight for the resort name */
 }
 
 .rating {
     background-color: #00008B; /* Deep blue background */
     margin: 0;
-    font-size: 9px; /* Font size for rating */
+    font-size: 12px; /* Font size for rating */
     padding: 2px 5px; /* Padding for better appearance */
     border-radius: 3px;
     display: inline-block; /* Ensure it stays in line with review */
@@ -70,7 +71,7 @@ main {
 }
 
 .resort-location {
-    font-size: 9px; /* Font size for location */
+    font-size: 12px; /* Font size for location */
     color: red; /* Red text color */
     font-weight: bold; /* Bold text */
     margin: 0;
@@ -85,7 +86,7 @@ main {
 .review {
     background-color: green; /* Green background */
     margin: 0;
-    font-size: 9px; /* Font size for review */
+    font-size: 12px; /* Font size for review */
     padding: 2px 5px; /* Padding for better appearance */
     border-radius: 3px;
     display: inline-block; /* Ensure it stays in line with rating */
@@ -147,45 +148,91 @@ main {
     font-size: 1em;
 }
 
-@media (max-width: 500px) {
+/* Media queries for different screen sizes */
+
+/* For tablets (screen width up to 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .resort h2 {
+        font-size: 14px; /* Adjust font size for the resort name on smaller screens */
+    }
+
+    .rating, .review {
+        font-size: 10px; /* Adjust font size for rating and review on smaller screens */
+    }
+
+    .resort-location {
+        font-size: 10px; /* Adjust font size for location on smaller screens */
+    }
+
     .resort {
-        flex-direction: row; /* Ensures image is on the left and text on the right for smaller screens as well */
-        align-items: flex-start; /* Aligns the image with the heading */
-        padding: 1em;
+        padding: 1em; /* Adjust padding for smaller screens */
     }
 
     .resort img {
-        width: 100px; /* Adjust image size for mobile */
+        width: 150px; /* Adjust image size for smaller screens */
         height: 100px;
-        margin-right: 1em; /* Space between image and text */
+        margin-right: 1em;
+    }
+}
+
+/* For mobile devices (screen width up to 576px) */
+@media (max-width: 576px) {
+    body {
+        font-size: 12px;
     }
 
-    .resort-details {
-        margin-top: 0; /* Removes the margin at the top */
+    .resort h2 {
+        font-size: 12px; /* Adjust font size for the resort name on smaller screens */
     }
 
-    header {
-        padding: 1em;
+    .rating, .review {
+        font-size: 9px; /* Adjust font size for rating and review on smaller screens */
     }
 
-    main {
-        padding: 1em;
+    .resort-location {
+        font-size: 9px; /* Adjust font size for location on smaller screens */
     }
 
-    #jsonFile {
-        margin-top: 1em;
+    .resort {
+        padding: 0.8em; /* Adjust padding for smaller screens */
     }
 
-    .resort, #pagination {
-        margin: 1em 0;
+    .resort img {
+        width: 120px; /* Adjust image size for smaller screens */
+        height: 90px;
+        margin-right: 0.8em;
+    }
+}
+
+/* For very small mobile devices (screen width up to 320px) */
+@media (max-width: 320px) {
+    body {
+        font-size: 10px;
     }
 
-    #pagination button {
-        padding: 0.5em 1em;
-        margin: 0 0.5em;
+    .resort h2 {
+        font-size: 10px; /* Adjust font size for the resort name on very small screens */
     }
 
-    #page-info {
-        margin-left: 1em;
+    .rating, .review {
+        font-size: 8px; /* Adjust font size for rating and review on very small screens */
+    }
+
+    .resort-location {
+        font-size: 8px; /* Adjust font size for location on very small screens */
+    }
+
+    .resort {
+        padding: 0.5em; /* Adjust padding for very small screens */
+    }
+
+    .resort img {
+        width: 100px; /* Adjust image size for very small screens */
+        height: 75px;
+        margin-right: 0.5em;
     }
 }
