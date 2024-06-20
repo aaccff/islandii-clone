@@ -56,11 +56,11 @@ main {
 .resort h2 {
     margin: 0;
     font-size: 16px; /* Font size for the resort name */
-    font-weight: bold; /* Font weight for the resort name */
+    font-weight: normal; /* Font weight for the resort name */
 }
 
 .rating {
-    background-color: #00008B; /* Deep blue background */
+    background-color: #green; /* Deep blue background */
     margin: 0;
     font-size: 12px; /* Font size for rating */
     padding: 2px 5px; /* Padding for better appearance */
