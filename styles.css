@@ -61,14 +61,14 @@ main {
 }
 
 .rating {
-    background: yellow
+    background: yellow;
     margin: 0;
     font-size: 12px; /* Font size for rating */
     padding: 2px 5px; /* Padding for better appearance */
     border-radius: 3px;
     display: inline-block; /* Ensure it stays in line with review */
     font-weight: normal; /* Font weight for rating */
-    color: black
+    color: black;
 }
 
 .resort-location {
@@ -93,7 +93,7 @@ main {
     border-radius: 3px;
     display: inline-block; /* Ensure it stays in line with rating */
     font-weight: bold; /* Font weight for review */
-    color: white; /* White text color */
+    color: black; /* White text color */
     margin-right: 5px; /* Space between review and rating */
 }
 
