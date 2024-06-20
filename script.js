@@ -32,6 +32,9 @@ function displayResorts() {
 
         const location = resort.Location.split(', ').slice(1).join(', ');
 
+        const room = resort.Rooms[0];
+        const pricePerNight = (parseFloat(room['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(room['Nights Counts'])).toFixed(2);
+
         resortElement.innerHTML = `
             <img src="${resort.Images[0]}" alt="${resort.Name}">
             <div class="resort-details">
@@ -44,13 +47,11 @@ function displayResorts() {
                     <p class="rating">Rating: ${resort.Rating}</p>
                 </div>
                 <div class="villa-details">
-                    ${resort.Rooms.map(room => `
-                        <div class="villa">
-                            <span>${room['Villa Name']}</span>,
-                            <span>${room['Villa Size']}</span>,
-                            <span>${room['Villa Prize']}</span>
-                        </div>
-                    `).join('')}
+                    <div class="villa">
+                        <span>${room['Villa Name']}</span>,
+                        <span>${room['Villa Size']}</span>,
+                        <span>US$ ${pricePerNight} per night</span>
+                    </div>
                 </div>
             </div>
         `;
