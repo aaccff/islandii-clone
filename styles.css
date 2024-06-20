@@ -68,7 +68,7 @@ main {
     border-radius: 3px;
     display: inline-block; /* Ensure it stays in line with review */
     font-weight: normal; /* Font weight for rating */
-    color: white; /* White text color */
+    color: #FFFFFF /* White text color */
 }
 
 .resort-location {
