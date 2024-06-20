@@ -61,20 +61,20 @@ main {
 }
 
 .rating {
-    background: rgba(0, 128, 0, 0) /* Green background with 30% opacity */
+    background: yellow
     margin: 0;
     font-size: 12px; /* Font size for rating */
     padding: 2px 5px; /* Padding for better appearance */
     border-radius: 3px;
     display: inline-block; /* Ensure it stays in line with review */
     font-weight: normal; /* Font weight for rating */
-    color: #FFFFFF /* White text color */
+    color: black
 }
 
 .resort-location {
     font-size: 12px; /* Font size for location */
     color: red; /* Red text color */
-    font-weight: bold; /* Bold text */
+    font-weight: normal; /* Bold text */
     margin: 0;
     letter-spacing: 0.5px; /* Slight letter spacing */
     line-height: 1.2; /* Adjusted line height for better readability */
