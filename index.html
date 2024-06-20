@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resort Reviews</title>
+    <title>Islandii Resorts</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Resort Reviews</h1>
+        <h1>Islandii Resorts</h1>
         <input type="file" id="jsonFile" accept=".json">
     </header>
-    <main>
-        <div id="resorts-container"></div>
-        <div id="pagination">
-            <button id="prevButton" onclick="prevPage()">Previous</button>
-            <span id="page-info"></span>
-            <button id="nextButton" onclick="nextPage()">Next</button>
-        </div>
+    <main id="resorts-container">
+        <!-- Resorts will be loaded here -->
     </main>
+    <div id="pagination">
+        <button id="prev" onclick="prevPage()">Previous</button>
+        <span id="page-info"></span>
+        <button id="next" onclick="nextPage()">Next</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
