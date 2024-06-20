@@ -65,8 +65,8 @@ main {
     font-size: 12px; /* Font size for rating */
     padding: 2px 5px; /* Padding for better appearance */
     border-radius: 3px;
-    display: inline-block; /* Ensure it stays in line with review */
-    font-weight: bold; /* Font weight for rating */
+    display: inline; /* Ensure it stays in line with review */
+    font-weight: normal; /* Font weight for rating */
     color: white; /* White text color */
 }
 
@@ -89,8 +89,8 @@ main {
     font-size: 12px; /* Font size for review */
     padding: 2px 5px; /* Padding for better appearance */
     border-radius: 3px;
-    display: inline-block; /* Ensure it stays in line with rating */
-    font-weight: bold; /* Font weight for review */
+    display: inline; /* Ensure it stays in line with rating */
+    font-weight: normal; /* Font weight for review */
     color: white; /* White text color */
     margin-right: 5px; /* Space between review and rating */
 }
