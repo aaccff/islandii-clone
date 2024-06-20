@@ -12,6 +12,7 @@ function loadJSON(event) {
     reader.onload = function(e) {
         resorts = JSON.parse(e.target.result);
         localStorage.setItem('resorts', JSON.stringify(resorts));
+        currentPage = 1;
         displayResorts();
         updatePageInfo();
     };
@@ -30,7 +31,7 @@ function displayResorts() {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
 
-        const location = resort.Location.split(', ').slice(1).join(', ');
+        const location = resort.Location;
 
         const room = resort.Rooms[0];
         const pricePerNight = (parseFloat(room['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(room['Nights Counts'])).toFixed(2);
@@ -88,3 +89,7 @@ function updatePageInfo() {
     const totalPages = Math.ceil(resorts.length / itemsPerPage);
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 }
+
+// Initial call to ensure buttons and page info are set up correctly
+updatePaginationButtons();
+updatePageInfo();
