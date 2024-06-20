@@ -12,7 +12,6 @@ function loadJSON(event) {
     reader.onload = function(e) {
         resorts = JSON.parse(e.target.result);
         localStorage.setItem('resorts', JSON.stringify(resorts));
-        currentPage = 1;
         displayResorts();
         updatePageInfo();
     };
@@ -27,28 +26,23 @@ function displayResorts() {
     const end = start + itemsPerPage;
     const paginatedResorts = resorts.slice(start, end);
 
-    paginatedResorts.forEach(resort => {
+    paginatedResorts.forEach((resort, index) => {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
-
-        const location = resort.Location;
-
-        const room = resort.Rooms[0];
-        const pricePerNight = (parseFloat(room['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(room['Nights Counts'])).toFixed(2);
 
         resortElement.innerHTML = `
             <img src="${resort.Images[0]}" alt="${resort.Name}">
             <div class="resort-details">
-                <h2>${resort.Name}</h2>
-                <div class="resort-location">
-                    <a href="${resort['Google Map Link']}" target="_blank">${location}</a>
-                </div>
-                <div class="rating-review">
+                <div class="resort-header">
+                    <h2 class="resort-name">${resort.Name}</h2>
+                    <div class="resort-location">
+                        <a href="${resort.GoogleMapLink}" target="_blank">${resort.Location}</a>
+                    </div>
                     <p class="review">Review: ${resort.Review}</p>
-                    <p class="rating">Rating: ${resort.Rating}</p>
-                </div>
-                <div class="villa-details">
-                    <div class="villa">
+                    <p class="rating">Rating: ${resort.Rating} ⭐</p>
+                    </div>
+                    <div class="villa-details">
+                     <div class="villa">
                         <span>${room['Villa Name']}</span>,
                         <span>${room['Villa Size']}</span>,
                         <span>US$ ${pricePerNight} per night</span>
@@ -60,7 +54,20 @@ function displayResorts() {
         container.appendChild(resortElement);
     });
 
+    adjustFontSizes();
     updatePaginationButtons();
+}
+
+function adjustFontSizes() {
+    const resortNames = document.querySelectorAll('.resort-name');
+    resortNames.forEach(name => {
+        let fontSize = 24; // Start with a base font size
+        name.style.fontSize = `${fontSize}px`;
+        while (name.scrollWidth > name.clientWidth && fontSize > 12) { // Reduce the font size until it fits or until a minimum font size is reached
+            fontSize--;
+            name.style.fontSize = `${fontSize}px`;
+        }
+    });
 }
 
 function prevPage() {
@@ -90,6 +97,11 @@ function updatePageInfo() {
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 }
 
-// Initial call to ensure buttons and page info are set up correctly
-updatePaginationButtons();
-updatePageInfo();
+document.addEventListener('DOMContentLoaded', function() {
+    const storedResorts = localStorage.getItem('resorts');
+    if (storedResorts) {
+        resorts = JSON.parse(storedResorts);
+        displayResorts();
+        updatePageInfo();
+    }
+});
