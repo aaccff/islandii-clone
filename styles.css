@@ -86,7 +86,7 @@ main {
 }
 
 .review {
-    background-color: green; /* Green background */
+    background-color: rgb(11, 237, 237); /* Green background */
     margin: 0;
     font-size: 12px; /* Font size for review */
     padding: 2px 5px; /* Padding for better appearance */
