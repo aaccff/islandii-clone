@@ -49,9 +49,11 @@ function displayFirstVilla(rooms) {
     if (rooms && rooms.length > 0) {
         const room = rooms[0];
         return `
-            <div class="villa">
+            <div class="villa-name-size">
                 <span>${room['Villa Name']}</span>,
-                <span>${room['Villa Size']}</span>,
+                <span>${room['Villa Size']}</span>
+            </div>
+            <div class="villa-price">
                 <span>US$ ${(parseFloat(room['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(room['Nights Counts'])).toFixed(2)} per night</span>
             </div>
         `;
