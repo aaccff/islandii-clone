@@ -50,10 +50,9 @@ function displayResorts() {
             <img src="${resort.Images[0]}" alt="${resort.Name}">
             <div class="resort-details">
                 <h2>${resort.Name}</h2>
-                <div class="rating-review">
-                    <p class="review">Review: ${resort.Review}</p>
-                    <p class="rating">Rating: ${resort.Rating}</p>
-                </div>
+                <div class="rating">Rating: ${resort.Rating}</div>
+                <div class="review">Review: ${resort.Review}</div>
+                <div class="number-of-reviews">${resort['Total Number of Reviews']}</div>
                 <div class="villa-details">
                     ${displayFirstVilla(resort.Rooms)}
                 </div>
