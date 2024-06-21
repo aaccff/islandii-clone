@@ -12,7 +12,6 @@ function loadJSON(event) {
     reader.onload = function(e) {
         resorts = JSON.parse(e.target.result);
         localStorage.setItem('resorts', JSON.stringify(resorts));
-        currentPage = 1;
         displayResorts();
         updatePageInfo();
     };
@@ -31,10 +30,7 @@ function displayResorts() {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
 
-        const location = resort.Location;
-
-        const room = resort.Rooms[0];
-        const pricePerNight = (parseFloat(room['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(room['Nights Counts'])).toFixed(2);
+        const location = resort.Location.split(', ').slice(1).join(', ');
 
         resortElement.innerHTML = `
             <img src="${resort.Images[0]}" alt="${resort.Name}">
@@ -48,11 +44,13 @@ function displayResorts() {
                     <p class="rating">Rating: ${resort.Rating}</p>
                 </div>
                 <div class="villa-details">
-                    <div class="villa">
-                        <span>${room['Villa Name']}</span>,
-                        <span>${room['Villa Size']}</span>,
-                        <span>US$ ${pricePerNight} per night</span>
-                    </div>
+                    ${resort.Rooms.map(room => `
+                        <div class="villa">
+                            <span>${room['Villa Name']}</span>,
+                            <span>${room['Villa Size']}</span>,
+                            <span>${room['Villa Prize']}</span>
+                        </div>
+                    `).join('')}
                 </div>
             </div>
         `;
@@ -88,9 +86,4 @@ function updatePageInfo() {
     const pageInfo = document.getElementById('page-info');
     const totalPages = Math.ceil(resorts.length / itemsPerPage);
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-    updatePaginationButtons();
 }
-
-// Initial call to ensure buttons and page info are set up correctly
-updatePaginationButtons();
-updatePageInfo();
