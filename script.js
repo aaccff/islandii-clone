@@ -12,6 +12,7 @@ function loadJSON(event) {
     reader.onload = function(e) {
         resorts = JSON.parse(e.target.result);
         localStorage.setItem('resorts', JSON.stringify(resorts));
+        currentPage = 1; // Reset to first page
         displayResorts();
         updatePageInfo();
         updatePaginationButtons();
@@ -45,15 +46,10 @@ function displayResorts() {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
 
-        const location = resort.Location.split(', ').slice(1).join(', ');
-
         resortElement.innerHTML = `
             <img src="${resort.Images[0]}" alt="${resort.Name}">
             <div class="resort-details">
                 <h2>${resort.Name}</h2>
-                <div class="resort-location">
-                    <a href="${resort['Google Map Link']}" target="_blank">${location}</a>
-                </div>
                 <div class="rating-review">
                     <p class="review">Review: ${resort.Review}</p>
                     <p class="rating">Rating: ${resort.Rating}</p>
