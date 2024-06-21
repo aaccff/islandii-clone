@@ -38,7 +38,7 @@ main {
 
 .resort {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: row; /* Ensures image is on the left and text on the right */
     background: white;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -51,11 +51,11 @@ main {
 }
 
 .resort img {
-    width: 100%; /* Full width */
+    width: 200px; /* Fixed width for the image */
     height: auto; /* Maintain aspect ratio */
     object-fit: cover;
     border-radius: 5px;
-    margin-bottom: 1.618em; /* Golden ratio */
+    margin-right: 1.618em; /* Golden ratio */
 }
 
 .resort h2 {
@@ -85,10 +85,8 @@ main {
 }
 
 .number-of-reviews {
-    color: transparent; /* Transparent font color */
-    background-clip: text;
-    -webkit-background-clip: text;
-    background: linear-gradient(to right, green, green); /* Green highlight */
+    color: green; /* Green font color */
+    background: transparent; /* Transparent background */
     border: 1px solid black; /* Black border */
     padding: 2px 5px; /* Padding for review count */
     border-radius: 3px; /* Rounded corners for review count */
@@ -96,7 +94,7 @@ main {
 
 .villa-details {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Stack villa details vertically */
     margin-top: 1em;
 }
 
@@ -105,11 +103,11 @@ main {
 }
 
 .villa-price {
-    margin-top: 1.618em; /* Golden ratio */
     font-size: 14px;
     font-weight: bold;
     color: #000;
     text-align: right; /* Align text to the right */
+    margin-top: 1em;
 }
 
 .resort p {
@@ -182,7 +180,7 @@ main {
     }
 
     .resort img {
-        width: 100%; /* Adjust image size for smaller screens */
+        width: 150px; /* Adjust image size for smaller screens */
         height: auto;
     }
 
@@ -232,6 +230,11 @@ main {
 
     .resort {
         padding: 0.5em; /* Adjust padding for very small screens */
+    }
+
+    .resort img {
+        width: 100px; /* Adjust image size for very small screens */
+        height: auto;
     }
 
     .villa-price {
