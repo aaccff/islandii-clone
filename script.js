@@ -1,3 +1,36 @@
+let currentPage = 1;
+const itemsPerPage = 15;
+let resorts = [];
+
+document.getElementById('jsonFile').addEventListener('change', loadJSON);
+
+function loadJSON(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        resorts = JSON.parse(e.target.result);
+        localStorage.setItem('resorts', JSON.stringify(resorts));
+        currentPage = 1; // Reset to first page
+        displayResorts();
+        updatePageInfo();
+        updatePaginationButtons();
+    };
+    reader.readAsText(file);
+}
+
+function displayResorts() {
+    const container = document.getElementById('resorts-container');
+    container.innerHTML = '';
+
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedResorts = resorts.slice(start, end);
+
+    paginatedResorts.forEach(resort => {
+        const resortElement = document.createElement('div');
+       
         resortElement.className = 'resort';
 
         const location = resort.Location.split(', ').slice(1).join(', ');
