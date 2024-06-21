@@ -23,6 +23,11 @@ header {
     margin-top: 1.618em; /* Golden ratio */
 }
 
+#sortOptions {
+    margin-left: 1.618em; /* Golden ratio */
+    padding: 0.5em;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -83,14 +88,31 @@ main {
     color: transparent; /* Transparent font color */
     background-clip: text;
     -webkit-background-clip: text;
-    background: linear-gradient(to right, yellow, yellow); /* yellow highlight */
+    background: linear-gradient(to right, green, green); /* Green highlight */
     border: 1px solid black; /* Black border */
     padding: 2px 5px; /* Padding for review count */
     border-radius: 3px; /* Rounded corners for review count */
 }
 
+.villa-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 1em;
+}
+
+.villa-name-size {
+    flex: 1;
+}
+
+.villa-price {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+}
+
 .resort p {
-    color: #d40606;
+    color: #666;
 }
 
 .resort:hover {
@@ -108,17 +130,6 @@ main {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-}
-
-.villa-details {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1em;
-}
-
-.villa {
-    margin-bottom: 0.5em;
-    font-size: 14px;
 }
 
 #pagination {
@@ -174,6 +185,10 @@ main {
         height: 100px;
         margin-right: 1em;
     }
+
+    .villa-price {
+        font-size: 12px;
+    }
 }
 
 /* For mobile devices (screen width up to 576px) */
@@ -200,6 +215,10 @@ main {
         height: 90px;
         margin-right: 0.8em;
     }
+
+    .villa-price {
+        font-size: 10px;
+    }
 }
 
 /* For very small mobile devices (screen width up to 320px) */
@@ -225,5 +244,9 @@ main {
         width: 100px; /* Adjust image size for very small screens */
         height: 75px;
         margin-right: 0.5em;
+    }
+
+    .villa-price {
+        font-size: 8px;
     }
 }
