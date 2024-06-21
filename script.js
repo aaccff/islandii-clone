@@ -12,10 +12,8 @@ function loadJSON(event) {
     reader.onload = function(e) {
         resorts = JSON.parse(e.target.result);
         localStorage.setItem('resorts', JSON.stringify(resorts));
-        currentPage = 1; // Reset to the first page
         displayResorts();
         updatePageInfo();
-        updatePaginationButtons();
     };
     reader.readAsText(file);
 }
@@ -32,7 +30,7 @@ function displayResorts() {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
 
-        const location = resort.Location;
+        const location = resort.Location.split(', ').slice(1).join(', ');
 
         resortElement.innerHTML = `
             <img src="${resort.Images[0]}" alt="${resort.Name}">
@@ -46,17 +44,21 @@ function displayResorts() {
                     <p class="rating">Rating: ${resort.Rating}</p>
                 </div>
                 <div class="villa-details">
-                    <div class="villa">
-                        <span>${resort.Rooms[0]['Villa Name']}</span>,
-                        <span>${resort.Rooms[0]['Villa Size']}</span>,
-                        <span>US$ ${(parseFloat(resort.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(resort.Rooms[0]['Nights Counts'])).toFixed(2)} per night</span>
-                    </div>
+                    ${resort.Rooms.map(room => `
+                        <div class="villa">
+                            <span>${room['Villa Name']}</span>,
+                            <span>${room['Villa Size']}</span>,
+                            <span>${room['Villa Prize']}</span>
+                        </div>
+                    `).join('')}
                 </div>
             </div>
         `;
 
         container.appendChild(resortElement);
     });
+
+    updatePaginationButtons();
 }
 
 function prevPage() {
@@ -64,7 +66,6 @@ function prevPage() {
         currentPage--;
         displayResorts();
         updatePageInfo();
-        updatePaginationButtons();
     }
 }
 
@@ -73,7 +74,6 @@ function nextPage() {
         currentPage++;
         displayResorts();
         updatePageInfo();
-        updatePaginationButtons();
     }
 }
 
@@ -87,7 +87,3 @@ function updatePageInfo() {
     const totalPages = Math.ceil(resorts.length / itemsPerPage);
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 }
-
-// Initial call to ensure buttons and page info are set up correctly
-updatePaginationButtons();
-updatePageInfo();
