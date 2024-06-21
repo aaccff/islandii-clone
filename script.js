@@ -1,6 +1,7 @@
 let currentPage = 1;
 const itemsPerPage = 15;
 let resorts = [];
+let sortedResorts = [];
 
 document.getElementById('jsonFile').addEventListener('change', loadJSON);
 
@@ -11,6 +12,7 @@ function loadJSON(event) {
     const reader = new FileReader();
     reader.onload = function(e) {
         resorts = JSON.parse(e.target.result);
+        sortedResorts = [...resorts]; // Create a copy for sorting
         localStorage.setItem('resorts', JSON.stringify(resorts));
         currentPage = 1; // Reset to first page
         displayResorts();
@@ -18,6 +20,29 @@ function loadJSON(event) {
         updatePaginationButtons();
     };
     reader.readAsText(file);
+}
+
+function sortResorts() {
+    const sortOption = document.getElementById('sortOptions').value;
+    
+    switch (sortOption) {
+        case 'priceLowHigh':
+            sortedResorts.sort((a, b) => parseFloat(a.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")) - parseFloat(b.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")));
+            break;
+        case 'priceHighLow':
+            sortedResorts.sort((a, b) => parseFloat(b.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")) - parseFloat(a.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")));
+            break;
+        case 'alphabetical':
+            sortedResorts.sort((a, b) => a.Name.localeCompare(b.Name));
+            break;
+        default:
+            sortedResorts = [...resorts];
+    }
+
+    currentPage = 1; // Reset to first page after sorting
+    displayResorts();
+    updatePageInfo();
+    updatePaginationButtons();
 }
 
 function displayFirstVilla(rooms) {
@@ -40,7 +65,7 @@ function displayResorts() {
 
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    const paginatedResorts = resorts.slice(start, end);
+    const paginatedResorts = sortedResorts.slice(start, end);
 
     paginatedResorts.forEach(resort => {
         const resortElement = document.createElement('div');
@@ -76,7 +101,7 @@ function prevPage() {
 }
 
 function nextPage() {
-    if ((currentPage * itemsPerPage) < resorts.length) {
+    if ((currentPage * itemsPerPage) < sortedResorts.length) {
         currentPage++;
         displayResorts();
         updatePageInfo();
@@ -85,12 +110,12 @@ function nextPage() {
 
 function updatePaginationButtons() {
     document.getElementById('prev').disabled = currentPage === 1;
-    document.getElementById('next').disabled = (currentPage * itemsPerPage) >= resorts.length;
+    document.getElementById('next').disabled = (currentPage * itemsPerPage) >= sortedResorts.length;
 }
 
 function updatePageInfo() {
     const pageInfo = document.getElementById('page-info');
-    const totalPages = Math.ceil(resorts.length / itemsPerPage);
+    const totalPages = Math.ceil(sortedResorts.length / itemsPerPage);
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 }
 
