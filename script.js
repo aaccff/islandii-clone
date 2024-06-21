@@ -12,7 +12,7 @@ function loadJSON(event) {
     reader.onload = function(e) {
         resorts = JSON.parse(e.target.result);
         localStorage.setItem('resorts', JSON.stringify(resorts));
-        currentPage = 1; // Reset to first page
+        currentPage = 1; // Reset to the first page
         displayResorts();
         updatePageInfo();
         updatePaginationButtons();
@@ -30,10 +30,9 @@ function displayResorts() {
 
     paginatedResorts.forEach(resort => {
         const resortElement = document.createElement('div');
-       
         resortElement.className = 'resort';
 
-        const location = resort.Location.split(', ').slice(1).join(', ');
+        const location = resort.Location;
 
         resortElement.innerHTML = `
             <img src="${resort.Images[0]}" alt="${resort.Name}">
@@ -58,8 +57,6 @@ function displayResorts() {
 
         container.appendChild(resortElement);
     });
-
-    updatePaginationButtons();
 }
 
 function prevPage() {
@@ -67,6 +64,7 @@ function prevPage() {
         currentPage--;
         displayResorts();
         updatePageInfo();
+        updatePaginationButtons();
     }
 }
 
@@ -75,6 +73,7 @@ function nextPage() {
         currentPage++;
         displayResorts();
         updatePageInfo();
+        updatePaginationButtons();
     }
 }
 
