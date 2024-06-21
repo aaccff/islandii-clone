@@ -66,16 +66,26 @@ main {
     gap: 10px; /* Space between each item */
 }
 
-.rating, .review, .number-of-reviews {
+.rating, .number-of-reviews {
     margin: 0;
-    font-size: 12px; /* Font size for rating, review, and number of reviews */
-    font-weight: bold; /* Font weight for rating, review, and number of reviews */
+    font-size: 12px; /* Font size for rating, and number of reviews */
+    font-weight: bold; /* Font weight for rating, and number of reviews */
 }
 
 .number-of-reviews {
     background-color: #fffacd; /* Light yellow background */
     padding: 2px 5px; /* Padding for review count */
     border-radius: 3px; /* Rounded corners for review count */
+}
+
+.review {
+    margin: 0;
+    font-size: 12px; /* Font size for review */
+    font-weight: bold; /* Font weight for review */
+    color: green; /* Green text color */
+    border: 1px solid black; /* Black border */
+    padding: 2px 5px; /* Padding for review */
+    border-radius: 3px; /* Rounded corners for review */
 }
 
 .resort p {
