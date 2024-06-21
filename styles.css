@@ -38,7 +38,7 @@ main {
 
 .resort {
     display: flex;
-    flex-direction: row; /* Ensures image is on the left and text on the right */
+    flex-direction: column; /* Stack items vertically */
     background: white;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -51,11 +51,11 @@ main {
 }
 
 .resort img {
-    width: 200px; /* Fixed width for the image */
-    height: 150px;
+    width: 100%; /* Full width */
+    height: auto; /* Maintain aspect ratio */
     object-fit: cover;
     border-radius: 5px;
-    margin-right: 1.618em; /* Golden ratio */
+    margin-bottom: 1.618em; /* Golden ratio */
 }
 
 .resort h2 {
@@ -97,7 +97,6 @@ main {
 .villa-details {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
     margin-top: 1em;
 }
 
@@ -106,9 +105,11 @@ main {
 }
 
 .villa-price {
+    margin-top: 1.618em; /* Golden ratio */
     font-size: 14px;
     font-weight: bold;
     color: #000;
+    text-align: right; /* Align text to the right */
 }
 
 .resort p {
@@ -181,9 +182,8 @@ main {
     }
 
     .resort img {
-        width: 150px; /* Adjust image size for smaller screens */
-        height: 100px;
-        margin-right: 1em;
+        width: 100%; /* Adjust image size for smaller screens */
+        height: auto;
     }
 
     .villa-price {
@@ -210,12 +210,6 @@ main {
         padding: 0.8em; /* Adjust padding for smaller screens */
     }
 
-    .resort img {
-        width: 120px; /* Adjust image size for smaller screens */
-        height: 90px;
-        margin-right: 0.8em;
-    }
-
     .villa-price {
         font-size: 10px;
     }
@@ -238,12 +232,6 @@ main {
 
     .resort {
         padding: 0.5em; /* Adjust padding for very small screens */
-    }
-
-    .resort img {
-        width: 100px; /* Adjust image size for very small screens */
-        height: 75px;
-        margin-right: 0.5em;
     }
 
     .villa-price {
