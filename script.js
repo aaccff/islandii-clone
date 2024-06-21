@@ -14,8 +14,23 @@ function loadJSON(event) {
         localStorage.setItem('resorts', JSON.stringify(resorts));
         displayResorts();
         updatePageInfo();
+        updatePaginationButtons();
     };
     reader.readAsText(file);
+}
+
+function displayFirstVilla(rooms) {
+    if (rooms && rooms.length > 0) {
+        const room = rooms[0];
+        return `
+            <div class="villa">
+                <span>${room['Villa Name']}</span>,
+                <span>${room['Villa Size']}</span>,
+                <span>US$ ${(parseFloat(room['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(room['Nights Counts'])).toFixed(2)} per night</span>
+            </div>
+        `;
+    }
+    return '';
 }
 
 function displayResorts() {
@@ -44,13 +59,7 @@ function displayResorts() {
                     <p class="rating">Rating: ${resort.Rating}</p>
                 </div>
                 <div class="villa-details">
-                    ${resort.Rooms.map(room => `
-                        <div class="villa">
-                            <span>${room['Villa Name']}</span>,
-                            <span>${room['Villa Size']}</span>,
-                            <span>${room['Villa Prize']}</span>
-                        </div>
-                    `).join('')}
+                    ${displayFirstVilla(resort.Rooms)}
                 </div>
             </div>
         `;
@@ -87,3 +96,7 @@ function updatePageInfo() {
     const totalPages = Math.ceil(resorts.length / itemsPerPage);
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 }
+
+// Initial call to ensure buttons and page info are set up correctly
+updatePaginationButtons();
+updatePageInfo();
