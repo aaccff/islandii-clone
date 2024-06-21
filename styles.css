@@ -83,7 +83,7 @@ main {
     color: transparent; /* Transparent font color */
     background-clip: text;
     -webkit-background-clip: text;
-    background: linear-gradient(to right, green, green); /* Green highlight */
+    background: linear-gradient(to right, yellow, yellow); /* yellow highlight */
     border: 1px solid black; /* Black border */
     padding: 2px 5px; /* Padding for review count */
     border-radius: 3px; /* Rounded corners for review count */
