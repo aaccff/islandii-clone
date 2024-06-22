@@ -6,6 +6,54 @@
     <title>Resorts</title>
     <style>
         /* Add necessary CSS here */
+        .resort {
+            display: flex;
+            border: 1px solid black;
+            margin-bottom: 15px;
+            padding: 10px;
+            justify-content: space-between;
+        }
+        .resort-image img {
+            width: 150px;
+            height: auto;
+        }
+        .resort-info {
+            flex: 1;
+            padding: 0 15px;
+        }
+        .rating-review, .villa-details {
+            margin-bottom: 10px;
+        }
+        .resort-price {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+        .price-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .price {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .per-night-incl-taxes {
+            margin: 5px 0;
+        }
+        .view-offer {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
