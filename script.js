@@ -76,7 +76,7 @@ function displayResorts() {
             <div class="resort-info">
                 <h2>${resort.Name}</h2>
                 <div class="rating-review">
-                    <span class="rating">⭐ ${resort.Rating}</span>
+                    <span class="rating">⭐⭐⭐⭐⭐ ${resort.Rating}</span>
                     <span class="review">${resort.Review}</span>
                     <span class="number-of-reviews" style="background-color: lightyellow; padding: 2px 4px; border: 1px solid black; color: green;">${resort['Total Number of Reviews']} reviews</span>
                 </div>
