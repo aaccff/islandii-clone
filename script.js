@@ -16,6 +16,7 @@ function loadJSON(event) {
         localStorage.setItem('resorts', JSON.stringify(resorts));
         displayResorts();
         updatePageInfo();
+        updatePaginationButtons();
     };
     reader.readAsText(file);
 }
