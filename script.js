@@ -12,20 +12,16 @@ function loadJSON(event) {
     const reader = new FileReader();
     reader.onload = function(e) {
         resorts = JSON.parse(e.target.result);
-        sortedResorts = [...resorts]; // Create a copy for sorting
+        sortedResorts = [...resorts];
         localStorage.setItem('resorts', JSON.stringify(resorts));
-        currentPage = 1; // Reset to first page
         displayResorts();
         updatePageInfo();
-        updatePaginationButtons();
     };
     reader.readAsText(file);
 }
 
-function sortResorts() {
-    const sortOption = document.getElementById('sortOptions').value;
-    
-    switch (sortOption) {
+function filterResorts(criteria) {
+    switch (criteria) {
         case 'priceLowHigh':
             sortedResorts.sort((a, b) => parseFloat(a.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")) - parseFloat(b.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")));
             break;
@@ -50,14 +46,11 @@ function displayFirstVilla(rooms) {
         const room = rooms[0];
         return `
             <div class="villa-name-size">
-                <span>${room['Villa Name']}</span>,
-                <span>${room['Villa Size']}</span>
+                <span>${room['Villa Name']}</span>
             </div>
             <div class="villa-price-info">
                 <span>per night incl taxes</span>
-            </div>
-            <div class="villa-price">
-                <span>US$ ${(parseFloat(room['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(room['Nights Counts'])).toFixed(2)}</span>
+                <span class="villa-price">US$ ${(parseFloat(room['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(room['Nights Counts'])).toFixed(2)}</span>
             </div>
         `;
     }
@@ -77,19 +70,22 @@ function displayResorts() {
         resortElement.className = 'resort';
 
         resortElement.innerHTML = `
-            <div class="column">
+            <div class="resort-image">
                 <img src="${resort.Images[0]}" alt="${resort.Name}">
             </div>
-            <div class="column">
+            <div class="resort-info">
                 <h2>${resort.Name}</h2>
                 <div class="rating-review">
-                    <p class="rating">Rating: ${resort.Rating}</p>
-                    <p class="review">${resort.Review}</p>
-                    <p class="number-of-reviews">${resort['Total Number of Reviews']}</p>
+                    <span class="rating">⭐ ${resort.Rating}</span>
+                    <span class="review">${resort.Review}</span>
+                    <span class="number-of-reviews" style="background-color: lightyellow; padding: 2px 4px; border: 1px solid black; color: green;">${resort['Total Number of Reviews']} reviews</span>
                 </div>
                 <div class="villa-details">
                     ${displayFirstVilla(resort.Rooms)}
                 </div>
+            </div>
+            <div class="resort-price">
+                <button class="view-offer">View offer</button>
             </div>
         `;
 
