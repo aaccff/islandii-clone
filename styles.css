@@ -1,4 +1,24 @@
-To optimize the code for all device sizes, you can use responsive design techniques like media queries to adapt the layout and styles based on the screen size. Here's an optimized version of the CSS code with added media queries for responsiveness:
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+#resorts-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.resort {
+    background-color: rgb(99, 14, 14);
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -175,4 +195,101 @@ body {
         padding: 8px 16px;
     }
 }
-This updated CSS code includes media queries that adjust the styles for smaller screens (max-width: 768px). You can further customize the styles within the media queries to ensure optimal display on various devices.
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.resort-info h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.rating-review .rating {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #f39c12;
+}
+
+.rating-review .review {
+    font-size: 16px;
+    margin-right: 10px;
+    color: green;
+    border: 1px solid black;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.rating-review .number-of-reviews {
+    font-size: 14px;
+    background-color: lightyellow;
+    padding: 2px 4px;
+    border: 1px solid black;
+    color: green;
+    border-radius: 3px;
+}
+
+.villa-details {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.villa-price-info {
+    font-size: 14px;
+    color: #888;
+    margin-top: 5px;
+}
+
+.villa-price {
+    font-size: 18px;
+    color: #e74c3c;
+}
+
+.price {
+    font-size: 18px;
+    color: #e74c3c;
+    margin-bottom: 5px;
+}
+
+.per-night-incl-taxes {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.view-offer {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.view-offer:hover {
+    background-color: #555;
+}
+
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
