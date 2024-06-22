@@ -77,8 +77,10 @@ function displayResorts() {
         resortElement.className = 'resort';
 
         resortElement.innerHTML = `
-            <img src="${resort.Images[0]}" alt="${resort.Name}">
-            <div class="resort-details">
+            <div class="column">
+                <img src="${resort.Images[0]}" alt="${resort.Name}">
+            </div>
+            <div class="column">
                 <h2>${resort.Name}</h2>
                 <div class="rating-review">
                     <p class="rating">Rating: ${resort.Rating}</p>
