@@ -85,8 +85,6 @@ function displayResorts() {
                 </div>
             </div>
             <div class="resort-price">
-                <span class="price">US$ ${resort.Rooms[0]['Villa Prize']}</span>
-                <span class="per-night-incl-taxes">per night incl taxes</span>
                 <button class="view-offer">View offer</button>
             </div>
         `;
@@ -127,4 +125,3 @@ function updatePageInfo() {
 // Initial call to ensure buttons and page info are set up correctly
 updatePaginationButtons();
 updatePageInfo();
-
