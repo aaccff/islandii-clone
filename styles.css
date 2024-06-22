@@ -51,10 +51,11 @@ main {
 }
 
 .resort img {
-    width: 200px; /* Fixed width for the image */
+    flex: 0 0 200px; /* Fixed width for the image */
     height: auto; /* Maintain aspect ratio */
     object-fit: cover;
     border-radius: 5px;
+    margin-right: 1.618em; /* Golden ratio */
 }
 
 .resort .column {
