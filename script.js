@@ -1,5 +1,5 @@
 let currentPage = 1;
-const itemsPerPage = 15; // Ensure itemsPerPage is set to 15
+const itemsPerPage = 15;
 let resorts = [];
 let sortedResorts = [];
 
@@ -12,12 +12,10 @@ function loadJSON(event) {
     const reader = new FileReader();
     reader.onload = function(e) {
         resorts = JSON.parse(e.target.result);
-        console.log('Loaded Resorts:', resorts); // Debugging log
         sortedResorts = [...resorts];
         localStorage.setItem('resorts', JSON.stringify(resorts));
         displayResorts();
         updatePageInfo();
-        updatePaginationButtons();
     };
     reader.readAsText(file);
 }
@@ -61,10 +59,7 @@ function displayResorts() {
 
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    console.log(`Displaying resorts from index ${start} to ${end}`); // Debugging log
     const paginatedResorts = sortedResorts.slice(start, end);
-
-    console.log('Paginated Resorts:', paginatedResorts); // Debugging log
 
     paginatedResorts.forEach(resort => {
         const resortElement = document.createElement('div');
