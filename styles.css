@@ -16,7 +16,7 @@ header {
     padding: 1.618em; /* Golden ratio */
     background: #004d99;
     color: white;
-    text-align: start;
+    text-align: center;
 }
 
 #jsonFile {
@@ -55,7 +55,18 @@ main {
     height: auto; /* Maintain aspect ratio */
     object-fit: cover;
     border-radius: 5px;
-    margin-right: 1.618em; /* Golden ratio */
+}
+
+.resort .column {
+    flex: 1;
+    padding: 0 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.resort .column:first-child {
+    flex: 0 0 200px; /* Fixed width for the image column */
 }
 
 .resort h2 {
@@ -69,6 +80,7 @@ main {
     display: flex;
     align-items: center;
     gap: 10px; /* Space between each item */
+    margin-top: 0.5em;
 }
 
 .rating, .review, .number-of-reviews {
@@ -102,13 +114,6 @@ main {
     flex: 1;
 }
 
-.villa-price {
-    font-size: 14px;
-    font-weight: bold;
-    color: #000;
-    text-align: right; /* Align text to the right */
-}
-
 .villa-price-info {
     text-align: right;
     font-size: 12px;
@@ -117,25 +122,19 @@ main {
     margin-bottom: 0.5em;
 }
 
+.villa-price {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    text-align: right; /* Align text to the right */
+}
+
 .resort p {
     color: #666;
 }
 
 .resort:hover {
     transform: scale(1.02);
-}
-
-.resort-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-
-.resort-header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
 }
 
 #pagination {
@@ -202,6 +201,22 @@ main {
         font-size: 12px;
     }
 
+    .resort {
+        flex-direction: column; /* Stack columns vertically on small screens */
+        align-items: center;
+    }
+
+    .resort img {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 1em;
+    }
+
+    .resort .column {
+        width: 100%;
+        padding: 0;
+    }
+
     .resort h2 {
         font-size: 12px; /* Adjust font size for the resort name on smaller screens */
         line-height: 1.3; /* Adjust line height for smaller screens */
@@ -217,6 +232,7 @@ main {
 
     .villa-price, .villa-price-info {
         font-size: 10px;
+        text-align: center; /* Center text on small screens */
     }
 }
 
@@ -246,5 +262,6 @@ main {
 
     .villa-price, .villa-price-info {
         font-size: 8px;
+        text-align: center; /* Center text on very small screens */
     }
 }
