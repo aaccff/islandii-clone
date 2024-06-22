@@ -1,3 +1,4 @@
+To optimize the code for all device sizes, you can use responsive design techniques like media queries to adapt the layout and styles based on the screen size. Here's an optimized version of the CSS code with added media queries for responsiveness:
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -118,3 +119,60 @@ body {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+    #resorts-container {
+        width: 90%;
+    }
+
+    .resort {
+        padding: 8px;
+    }
+
+    .resort-info h2 {
+        font-size: 20px;
+    }
+
+    .rating-review .rating {
+        font-size: 16px;
+    }
+
+    .rating-review .review {
+        font-size: 14px;
+    }
+
+    .rating-review .number-of-reviews {
+        font-size: 12px;
+    }
+
+    .villa-details {
+        font-size: 14px;
+    }
+
+    .villa-price-info {
+        font-size: 12px;
+    }
+
+    .villa-price {
+        font-size: 16px;
+    }
+
+    .price {
+        font-size: 16px;
+    }
+
+    .per-night-incl-taxes {
+        font-size: 12px;
+    }
+
+    .view-offer {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .pagination button {
+        padding: 8px 16px;
+    }
+}
+This updated CSS code includes media queries that adjust the styles for smaller screens (max-width: 768px). You can further customize the styles within the media queries to ensure optimal display on various devices.
