@@ -1,7 +1,6 @@
 let currentPage = 1;
 const itemsPerPage = 15;
 let resorts = [];
-let sortedResorts = [];
 
 document.getElementById('jsonFile').addEventListener('change', loadJSON);
 
@@ -12,49 +11,11 @@ function loadJSON(event) {
     const reader = new FileReader();
     reader.onload = function(e) {
         resorts = JSON.parse(e.target.result);
-        sortedResorts = [...resorts];
         localStorage.setItem('resorts', JSON.stringify(resorts));
         displayResorts();
         updatePageInfo();
     };
     reader.readAsText(file);
-}
-
-function filterResorts(criteria) {
-    switch (criteria) {
-        case 'priceLowHigh':
-            sortedResorts.sort((a, b) => parseFloat(a.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")) - parseFloat(b.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")));
-            break;
-        case 'priceHighLow':
-            sortedResorts.sort((a, b) => parseFloat(b.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")) - parseFloat(a.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")));
-            break;
-        case 'alphabetical':
-            sortedResorts.sort((a, b) => a.Name.localeCompare(b.Name));
-            break;
-        default:
-            sortedResorts = [...resorts];
-    }
-
-    currentPage = 1; // Reset to first page after sorting
-    displayResorts();
-    updatePageInfo();
-    updatePaginationButtons();
-}
-
-function displayFirstVilla(rooms) {
-    if (rooms && rooms.length > 0) {
-        const room = rooms[0];
-        return `
-            <div class="villa-name-size">
-                <span>${room['Villa Name']}</span>
-            </div>
-            <div class="villa-price-info">
-                <span>per night incl taxes</span>
-                <span class="villa-price">US$ ${(parseFloat(room['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(room['Nights Counts'])).toFixed(2)}</span>
-            </div>
-        `;
-    }
-    return '';
 }
 
 function displayResorts() {
@@ -63,29 +24,26 @@ function displayResorts() {
 
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    const paginatedResorts = sortedResorts.slice(start, end);
+    const paginatedResorts = resorts.slice(start, end);
 
     paginatedResorts.forEach(resort => {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
 
+        const location = resort.Location.split(', ').slice(1).join(', ');
+
         resortElement.innerHTML = `
-            <div class="resort-image">
-                <img src="${resort.Images[0]}" alt="${resort.Name}">
-            </div>
-            <div class="resort-info">
+            <img src="${resort.Images[0]}" alt="${resort.Name}">
+            <div class="resort-details">
                 <h2>${resort.Name}</h2>
+                <div class="resort-location">
+                    <a href="${resort['Google Map Link']}" target="_blank">${location}</a>
+                </div>
                 <div class="rating-review">
-                    <span class="rating">⭐ ${resort.Rating}</span>
-                    <span class="review">${resort.Review}</span>
-                    <span class="number-of-reviews" style="background-color: lightyellow; padding: 2px 4px; border: 1px solid black; color: green;">${resort['Total Number of Reviews']} reviews</span>
+                    <span class="review">Review: ${resort.Review}</span>
+                    <span class="rating">Rating: ${resort.Rating}</span>
                 </div>
-                <div class="villa-details">
-                    ${displayFirstVilla(resort.Rooms)}
-                </div>
-            </div>
-            <div class="resort-price">
-                <button class="view-offer">View offer</button>
+                <button onclick="showMoreDetails(${resorts.indexOf(resort)})">More Details</button>
             </div>
         `;
 
@@ -93,6 +51,18 @@ function displayResorts() {
     });
 
     updatePaginationButtons();
+}
+
+function showMoreDetails(index) {
+    const resort = resorts[index];
+    alert(`
+        Name: ${resort.Name}
+        Location: ${resort.Location}
+        Description: ${resort.Description}
+        Rating: ${resort.Rating} (${resort['Total Number of Reviews']})
+        Review: ${resort.Review}
+        Rooms: ${resort.Rooms.map(room => room['Villa Name']).join(', ')}
+    `);
 }
 
 function prevPage() {
@@ -104,7 +74,7 @@ function prevPage() {
 }
 
 function nextPage() {
-    if ((currentPage * itemsPerPage) < sortedResorts.length) {
+    if ((currentPage * itemsPerPage) < resorts.length) {
         currentPage++;
         displayResorts();
         updatePageInfo();
@@ -113,15 +83,25 @@ function nextPage() {
 
 function updatePaginationButtons() {
     document.getElementById('prev').disabled = currentPage === 1;
-    document.getElementById('next').disabled = (currentPage * itemsPerPage) >= sortedResorts.length;
+    document.getElementById('next').disabled = (currentPage * itemsPerPage) >= resorts.length;
 }
 
 function updatePageInfo() {
     const pageInfo = document.getElementById('page-info');
-    const totalPages = Math.ceil(sortedResorts.length / itemsPerPage);
+    const totalPages = Math.ceil(resorts.length / itemsPerPage);
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 }
 
-// Initial call to ensure buttons and page info are set up correctly
-updatePaginationButtons();
-updatePageInfo();
+document.getElementById('jsonFile').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        resorts = JSON.parse(e.target.result);
+        localStorage.setItem('resorts', JSON.stringify(resorts));
+        displayResorts();
+        updatePageInfo();
+    };
+    reader.readAsText(file);
+});
