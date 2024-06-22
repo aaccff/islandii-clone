@@ -2,10 +2,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     background-color: #f8f8f8;
 }
 
@@ -16,20 +12,11 @@ body {
 }
 
 .resort {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     background-color: white;
     border: 1px solid #ddd;
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.resort-image {
-    flex: 1;
-    margin-right: 20px;
 }
 
 .resort-image img {
@@ -37,20 +24,10 @@ body {
     border-radius: 8px;
 }
 
-.resort-info {
-    flex: 2;
-}
-
 .resort-info h2 {
     margin: 0 0 10px;
     font-size: 24px;
     color: #333;
-}
-
-.rating-review {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
 }
 
 .rating-review .rating {
@@ -92,23 +69,6 @@ body {
 .villa-price {
     font-size: 18px;
     color: #e74c3c;
-}
-
-.resort-price {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-end;
-    position: relative;
-}
-
-.price-container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
 }
 
 .price {
