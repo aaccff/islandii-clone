@@ -1,236 +1,160 @@
-/* Base styles for larger screens */
 body {
-    font-family: sans-serif;
-    font-size: 16px; /* Base font size for larger screens */
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    line-height: 1.618; /* Golden ratio */
-}
-
-header {
-    width: 100%;
-    padding: 1.618em; /* Golden ratio */
-    background: #004d99;
-    color: white;
-    text-align: start;
-}
-
-#jsonFile {
-    margin-top: 1.618em; /* Golden ratio */
-}
-
-main {
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 1.618em; /* Golden ratio */
-    width: 100%;
+    background-color: #f8f8f8;
+}
+
+#resorts-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
 }
 
 .resort {
     display: flex;
-    flex-direction: row; /* Ensures image is on the left and text on the right */
-    background: white;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: white;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    margin: 1.618em 0; /* Golden ratio */
-    padding: 1.618em; /* Golden ratio */
-    width: 100%;
-    max-width: 1200px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
 }
 
-.resort img {
-    width: 200px; /* Fixed width for the image */
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-right: 1.618em; /* Golden ratio */
+.resort-image {
+    flex: 1;
+    margin-right: 20px;
 }
 
-.resort h2 {
-    margin: 0;
-    font-size: 16px; /* Font size for the resort name */
-    font-weight: bold; /* Font weight for the resort name */
-    line-height: 1.5; /* Adjusted line height for better readability */
+.resort-image img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.resort-info {
+    flex: 2;
+}
+
+.resort-info h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #333;
 }
 
 .rating-review {
     display: flex;
     align-items: center;
-    font-size: 12px; /* Font size for rating and review */
-    margin: 0.5em 0;
+    margin-bottom: 10px;
 }
 
-.review {
-    font-weight: bold; /* Font weight for review */
+.rating-review .rating {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #f39c12;
+}
+
+.rating-review .review {
+    font-size: 16px;
+    margin-right: 10px;
     color: green;
-    margin-right: 5px; /* Space between review and rating */
+    border: 1px solid black;
+    padding: 2px 4px;
+    border-radius: 3px;
 }
 
-.rating {
-    font-weight: bold; /* Font weight for rating */
-    color: #00008B; /* Deep blue text color */
+.rating-review .number-of-reviews {
+    font-size: 14px;
+    background-color: lightyellow;
+    padding: 2px 4px;
+    border: 1px solid black;
+    color: green;
+    border-radius: 3px;
 }
 
-.resort-location {
-    font-size: 12px; /* Font size for location */
-    color: red; /* Red text color */
-    font-weight: bold; /* Bold text */
-    margin: 0;
-    letter-spacing: 0.5px; /* Slight letter spacing */
-    line-height: 1.5; /* Adjusted line height for better readability */
+.villa-details {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
 }
 
-.resort-location a {
-    color: red; /* Red text color for link */
-    text-decoration: none;
+.villa-price-info {
+    font-size: 14px;
+    color: #888;
+    margin-top: 5px;
 }
 
-.resort p {
-    color: #666;
+.villa-price {
+    font-size: 18px;
+    color: #e74c3c;
 }
 
-.resort:hover {
-    transform: scale(1.02);
-}
-
-.resort-details {
+.resort-price {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    align-items: flex-end;
+    justify-content: flex-end;
+    position: relative;
 }
 
-.resort-header {
+.price-container {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
-#pagination {
+.price {
+    font-size: 18px;
+    color: #e74c3c;
+    margin-bottom: 5px;
+}
+
+.per-night-incl-taxes {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.view-offer {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.view-offer:hover {
+    background-color: #555;
+}
+
+/* Pagination Styles */
+.pagination {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: 1.618em 0; /* Golden ratio */
+    margin-top: 20px;
 }
 
-#pagination button {
-    padding: 0.618em 1.618em; /* Golden ratio */
-    margin: 0 1.618em; /* Golden ratio */
-    background: #004d99;
+.pagination button {
+    background-color: #333;
     color: white;
     border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
     cursor: pointer;
     border-radius: 5px;
 }
 
-#pagination button:disabled {
-    background: #ccc;
+.pagination button:disabled {
+    background-color: #ccc;
     cursor: not-allowed;
-}
-
-#page-info {
-    margin-left: 1.618em; /* Golden ratio */
-    font-size: 1em;
-}
-
-/* Media queries for different screen sizes */
-
-/* For tablets (screen width up to 768px) */
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-
-    .resort h2 {
-        font-size: 14px; /* Adjust font size for the resort name on smaller screens */
-        line-height: 1.4; /* Adjust line height for smaller screens */
-    }
-
-    .rating-review {
-        font-size: 10px; /* Adjust font size for rating and review on smaller screens */
-    }
-
-    .resort-location {
-        font-size: 10px; /* Adjust font size for location on smaller screens */
-        line-height: 1.4; /* Adjust line height for smaller screens */
-    }
-
-    .resort {
-        padding: 1em; /* Adjust padding for smaller screens */
-    }
-
-    .resort img {
-        width: 150px; /* Adjust image size for smaller screens */
-        height: 100px;
-        margin-right: 1em;
-    }
-}
-
-/* For mobile devices (screen width up to 576px) */
-@media (max-width: 576px) {
-    body {
-        font-size: 12px;
-    }
-
-    .resort h2 {
-        font-size: 12px; /* Adjust font size for the resort name on smaller screens */
-        line-height: 1.3; /* Adjust line height for smaller screens */
-    }
-
-    .rating-review {
-        font-size: 9px; /* Adjust font size for rating and review on smaller screens */
-    }
-
-    .resort-location {
-        font-size: 9px; /* Adjust font size for location on smaller screens */
-        line-height: 1.3; /* Adjust line height for smaller screens */
-    }
-
-    .resort {
-        padding: 0.8em; /* Adjust padding for smaller screens */
-    }
-
-    .resort img {
-        width: 120px; /* Adjust image size for smaller screens */
-        height: 90px;
-        margin-right: 0.8em;
-    }
-}
-
-/* For very small mobile devices (screen width up to 320px) */
-@media (max-width: 320px) {
-    body {
-        font-size: 10px;
-    }
-
-    .resort h2 {
-        font-size: 10px; /* Adjust font size for the resort name on very small screens */
-        line-height: 1.2; /* Adjust line height for very small screens */
-    }
-
-    .rating-review {
-        font-size: 8px; /* Adjust font size for rating and review on very small screens */
-    }
-
-    .resort-location {
-        font-size: 8px; /* Adjust font size for location on very small screens */
-        line-height: 1.2; /* Adjust line height for very small screens */
-    }
-
-    .resort {
-        padding: 0.5em; /* Adjust padding for very small screens */
-    }
-
-    .resort img {
-        width: 100px; /* Adjust image size for very small screens */
-        height: 75px;
-        margin-right: 0.5em;
-    }
 }
