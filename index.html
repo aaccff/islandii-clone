@@ -3,28 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islandii Resorts</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Resorts</title>
+    <style>
+        /* Add necessary CSS here */
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Islandii Resorts</h1>
-        <input type="file" id="jsonFile" accept=".json">
-        <select id="sortOptions" onchange="sortResorts()">
-            <option value="default">Sort By</option>
-            <option value="priceLowHigh">Price: Low to High</option>
-            <option value="priceHighLow">Price: High to Low</option>
-            <option value="alphabetical">Alphabetical Order</option>
-        </select>
-    </header>
-    <main id="resorts-container">
-        <!-- Resorts will be loaded here -->
-    </main>
-    <div id="pagination">
+    <input type="file" id="jsonFile">
+    <div id="filter-options">
+        <button onclick="filterResorts('priceLowHigh')">Price Low to High</button>
+        <button onclick="filterResorts('priceHighLow')">Price High to Low</button>
+        <button onclick="filterResorts('alphabetical')">Alphabetical</button>
+    </div>
+    <div id="resorts-container"></div>
+    <div id="pagination-controls">
         <button id="prev" onclick="prevPage()">Previous</button>
         <span id="page-info"></span>
         <button id="next" onclick="nextPage()">Next</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
