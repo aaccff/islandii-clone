@@ -3,73 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resorts</title>
-    <style>
-        /* Add necessary CSS here */
-        .resort {
-            display: flex;
-            border: 1px solid black;
-            margin-bottom: 15px;
-            padding: 10px;
-            justify-content: space-between;
-        }
-        .resort-image img {
-            width: 150px;
-            height: auto;
-        }
-        .resort-info {
-            flex: 1;
-            padding: 0 15px;
-        }
-        .rating-review, .villa-details {
-            margin-bottom: 10px;
-        }
-        .resort-price {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: flex-end;
-        }
-        .price-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-        .price {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-        .per-night-incl-taxes {
-            margin: 5px 0;
-        }
-        .view-offer {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-    </style>
+    <title>Islandii Resorts</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <input type="file" id="jsonFile">
-    <div id="filter-options">
-        <button onclick="filterResorts('priceLowHigh')">Price Low to High</button>
-        <button onclick="filterResorts('priceHighLow')">Price High to Low</button>
-        <button onclick="filterResorts('alphabetical')">Alphabetical</button>
-    </div>
-    <div id="resorts-container"></div>
-    <div id="pagination-controls">
+    <header>
+        <h1>Islandii Resorts</h1>
+        <input type="file" id="jsonFile" accept=".json">
+        <select id="sortOptions" onchange="sortResorts()">
+            <option value="default">Sort By</option>
+            <option value="priceLowHigh">Price: Low to High</option>
+            <option value="priceHighLow">Price: High to Low</option>
+            <option value="alphabetical">Alphabetical Order</option>
+        </select>
+    </header>
+    <main id="resorts-container">
+        <!-- Resorts will be loaded here -->
+    </main>
+    <div id="pagination">
         <button id="prev" onclick="prevPage()">Previous</button>
         <span id="page-info"></span>
         <button id="next" onclick="nextPage()">Next</button>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
