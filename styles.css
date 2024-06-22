@@ -19,6 +19,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-items: center; /* Center the resort elements */
 }
 
 .resort {
@@ -26,6 +27,9 @@ body {
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
+    width: 80%; /* Set a fixed width */
+    max-width: 1000px; /* Ensure it does not exceed a maximum width */
+    margin: 0 auto; /* Center the resort element */
 }
 
 .resort-image img {
@@ -36,6 +40,8 @@ body {
 
 .resort-image {
     flex: 1;
+    min-width: 150px; /* Set a minimum width */
+    max-width: 250px; /* Set a maximum width */
 }
 
 .resort-info {
