@@ -81,11 +81,13 @@ function displayResorts() {
                 </div>
             </div>
             <div class="resort-price">
-                <div class="price">
-                    US$ ${(parseFloat(resort.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(resort.Rooms[0]['Nights Counts'])).toFixed(2)}
+                <div class="price-container">
+                    <div class="price">
+                        US$ ${(parseFloat(resort.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(resort.Rooms[0]['Nights Counts'])).toFixed(2)}
+                    </div>
+                    <div class="per-night-incl-taxes">per night incl taxes</div>
+                    <button class="view-offer">View offer</button>
                 </div>
-                <div class="per-night-incl-taxes">per night incl taxes</div>
-                <button class="view-offer">View offer</button>
             </div>
         `;
 
