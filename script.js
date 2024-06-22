@@ -1,5 +1,5 @@
 let currentPage = 1;
-const itemsPerPage = 15;
+const itemsPerPage = 15; // Ensure itemsPerPage is set to 15
 let resorts = [];
 let sortedResorts = [];
 
