@@ -1,18 +1,26 @@
-
 let currentPage = 1;
 const itemsPerPage = 15;
 let resorts = [];
-let sortedResorts = [];
 
-document.getElementById('jsonFile').addEventListener('change', loadJSON);
+fetch('https://raw.githubusercontent.com/aaccff/islandii-clone/main/resorts.json')
+    .then(response => response.json())
+    .then(data => {
+        resorts = data;
+        localStorage.setItem('resorts', JSON.stringify(resorts));
+        displayResorts();
+        updatePageInfo();
+    })
+    .catch(error => {
+        console.error('Error loading JSON:', error);
+    });
 
 function loadJSON(event) {
     const file = event.target.files[0];
     if (!file) return;
+
     const reader = new FileReader();
     reader.onload = function(e) {
         resorts = JSON.parse(e.target.result);
-        sortedResorts = [...resorts];
         localStorage.setItem('resorts', JSON.stringify(resorts));
         displayResorts();
         updatePageInfo();
@@ -20,73 +28,67 @@ function loadJSON(event) {
     reader.readAsText(file);
 }
 
-function filterResorts(criteria) {
-    switch (criteria) {
-        case 'priceLowHigh':
-            sortedResorts.sort((a, b) => parseFloat(a.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")) - parseFloat(b.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")));
-            break;
-        case 'priceHighLow':
-            sortedResorts.sort((a, b) => parseFloat(b.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")) - parseFloat(a.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")));
-            break;
-        case 'alphabetical':
-            sortedResorts.sort((a, b) => a.Name.localeCompare(b.Name));
-            break;
-        default:
-            sortedResorts = [...resorts];
-    }
-    currentPage = 1; // Reset to first page after sorting
-    displayResorts();
-    updatePageInfo();
-}
-
-function displayFirstVilla(rooms) {
-    if (rooms && rooms.length > 0) {
-        const room = rooms[0];
-        return `
-            <div class="villa-name-size">
-                <span>${room['Villa Name']}</span>
-            </div>
-            <div class="villa-price-info">
-                <span>per night incl taxes</span>
-                <span class="villa-price">US$ ${(parseFloat(room['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(room['Nights Counts'])).toFixed(2)}</span>
-            </div>
-        `;
-    }
-    return '';
-}
-
 function displayResorts() {
     const container = document.getElementById('resorts-container');
     container.innerHTML = '';
+
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    const paginatedResorts = sortedResorts.slice(start, end);
-    paginatedResorts.forEach(resort => {
+    const paginatedResorts = resorts.slice(start, end);
+
+    paginatedResorts.forEach((resort, index) => {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
+
+        const location = "Baa Atoll, 06080, Maldives";
+
         resortElement.innerHTML = `
-            <div class="resort-image">
-                <img src="${resort.Images[0]}" alt="${resort.Name}">
-            </div>
-            <div class="resort-info">
-                <h2>${resort.Name}</h2>
-                <div class="rating-review">
-                    <span class="rating">⭐ ${resort.Rating}</span>
-                    <span class="review">${resort.Review}</span>
-                    <span class="number-of-reviews" style="background-color: lightyellow; padding: 2px 4px; border: 1px solid black; color: green;">${resort['Total Number of Reviews']} reviews</span>
+            <img src="${resort.Images[0]}" alt="${resort.Name}">
+            <div class="resort-details">
+                <div class="resort-header">
+                    <h2 class="resort-name">${resort.Name}</h2>
+                    <p class="review">Review: ${resort.Review}</p>
                 </div>
-                <div class="villa-details">
-                    ${displayFirstVilla(resort.Rooms)}
+                <div class="resort-location">
+                    <a href="${resort['Google Map Link']}" target="_blank">${location}</a>
                 </div>
-            </div>
-            <div class="resort-price">
-                <span class="price">US$ ${(parseFloat(resort.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(resort.Rooms[0]['Nights Counts'])).toFixed(2)}</span>
-                <button class="view-offer">View offer</button>
+                <div class="resort-rating">
+                    <p>Rating: ${resort.Rating}</p>
+                </div>
+                <p class="resort-description">${resort.Description.substring(0, 100)}...</p>
+                <button onclick="showMoreDetails(${index})">More Details</button>
             </div>
         `;
+
         container.appendChild(resortElement);
     });
+
+    adjustFontSizes();
     updatePaginationButtons();
+}
+
+function adjustFontSizes() {
+    const resortNames = document.querySelectorAll('.resort-name');
+    resortNames.forEach(name => {
+        let fontSize = 24; // Start with a base font size
+        name.style.fontSize = `${fontSize}px`;
+        while (name.scrollWidth > name.clientWidth && fontSize > 12) { // Reduce the font size until it fits or until a minimum font size is reached
+            fontSize--;
+            name.style.fontSize = `${fontSize}px`;
+        }
+    });
+}
+
+function showMoreDetails(index) {
+    const resort = resorts[index];
+    alert(`
+        Name: ${resort.Name}
+        Location: ${resort.Location}
+        Description: ${resort.Description}
+        Rating: ${resort.Rating} (${resort['Total Number of Reviews']})
+        Review: ${resort.Review}
+        Rooms: ${resort.Rooms.map(room => room['Villa Name']).join(', ')}
+    `);
 }
 
 function prevPage() {
@@ -98,7 +100,7 @@ function prevPage() {
 }
 
 function nextPage() {
-    if ((currentPage * itemsPerPage) < sortedResorts.length) {
+    if ((currentPage * itemsPerPage) < resorts.length) {
         currentPage++;
         displayResorts();
         updatePageInfo();
@@ -107,15 +109,20 @@ function nextPage() {
 
 function updatePaginationButtons() {
     document.getElementById('prev').disabled = currentPage === 1;
-    document.getElementById('next').disabled = (currentPage * itemsPerPage) >= sortedResorts.length;
+    document.getElementById('next').disabled = (currentPage * itemsPerPage) >= resorts.length;
 }
 
 function updatePageInfo() {
     const pageInfo = document.getElementById('page-info');
-    const totalPages = Math.ceil(sortedResorts.length / itemsPerPage);
+    const totalPages = Math.ceil(resorts.length / itemsPerPage);
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 }
 
-// Initial call to ensure buttons and page info are set up correctly
-updatePaginationButtons();
-updatePageInfo();
+document.addEventListener('DOMContentLoaded', function() {
+    const storedResorts = localStorage.getItem('resorts');
+    if (storedResorts) {
+        resorts = JSON.parse(storedResorts);
+        displayResorts();
+        updatePageInfo();
+    }
+});
