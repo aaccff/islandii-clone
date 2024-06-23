@@ -126,3 +126,59 @@ document.addEventListener('DOMContentLoaded', function() {
         updatePageInfo();
     }
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const filters = document.querySelectorAll(".filter button");
+    const resortContainer = document.querySelector(".resort-container");
+    const resorts = Array.from(document.querySelectorAll(".resort"));
+    const paginationContainer = document.querySelector(".pagination");
+    const resortsPerPage = 12;
+    let currentPage = 1;
+
+    const displayResorts = (page) => {
+        resortContainer.innerHTML = "";
+        const start = (page - 1) * resortsPerPage;
+        const end = start + resortsPerPage;
+        const paginatedResorts = resorts.slice(start, end);
+        paginatedResorts.forEach(resort => resortContainer.appendChild(resort));
+        updatePagination();
+    };
+
+    const updatePagination = () => {
+        paginationContainer.innerHTML = "";
+        const totalPages = Math.ceil(resorts.length / resortsPerPage);
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement("button");
+            pageButton.textContent = i;
+            if (i === currentPage) {
+                pageButton.classList.add("active");
+            }
+            pageButton.addEventListener("click", () => {
+                currentPage = i;
+                displayResorts(currentPage);
+            });
+            paginationContainer.appendChild(pageButton);
+        }
+    };
+
+    filters.forEach((filter) => {
+        filter.addEventListener("click", () => {
+            const filterType = filter.dataset.filter;
+            filters.forEach((btn) => btn.classList.remove("active"));
+            filter.classList.add("active");
+
+            resorts.forEach((resort) => {
+                if (filterType === "all" || resort.classList.contains(filterType)) {
+                    resort.style.display = "block";
+                } else {
+                    resort.style.display = "none";
+                }
+            });
+
+            resorts = Array.from(document.querySelectorAll(".resort")).filter(resort => resort.style.display === "block");
+            currentPage = 1;
+            displayResorts(currentPage);
+        });
+    });
+
+    displayResorts(currentPage);
+});
