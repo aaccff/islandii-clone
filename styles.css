@@ -19,29 +19,29 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-items: center; /* Center the resort elements */
+    align-items: center;
 }
 
 .resort {
     display: flex;
+    flex-direction: column;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
-    width: 80%; /* Set a fixed width */
-    max-width: 1000px; /* Ensure it does not exceed a maximum width */
-    margin: 0 auto; /* Center the resort element */
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .resort-image img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
 }
 
 .resort-image {
     flex: 1;
-    min-width: 150px; /* Set a minimum width */
-    max-width: 250px; /* Set a maximum width */
+    min-width: 150px;
 }
 
 .resort-info {
@@ -117,4 +117,38 @@ body {
 .pagination button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+
+/* Mobile Vertical View */
+@media (max-width: 768px) {
+    .resort {
+        width: 100%; /* Ensure full width on mobile */
+        max-width: 100%; /* Ensure full width on mobile */
+    }
+
+    .resort-image,
+    .resort-info,
+    .resort-price {
+        flex: none; /* Reset flex properties */
+        width: 100%; /* Full width for each section */
+        padding: 10px; /* Reduce padding for mobile */
+    }
+
+    .resort-image img {
+        width: 100%;
+        height: auto; /* Adjust image height */
+    }
+
+    .resort-price {
+        flex-direction: row; /* Align price and button horizontally */
+        justify-content: space-between; /* Distribute space */
+    }
+
+    .resort-price .price {
+        font-size: 20px; /* Adjust font size for mobile */
+    }
+
+    .resort-price .view-offer {
+        padding: 5px 10px; /* Adjust button padding for mobile */
+    }
 }
