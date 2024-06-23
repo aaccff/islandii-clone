@@ -8,7 +8,6 @@ document.getElementById('jsonFile').addEventListener('change', loadJSON);
 function loadJSON(event) {
     const file = event.target.files[0];
     if (!file) return;
-
     const reader = new FileReader();
     reader.onload = function(e) {
         resorts = JSON.parse(e.target.result);
@@ -34,11 +33,9 @@ function filterResorts(criteria) {
         default:
             sortedResorts = [...resorts];
     }
-
     currentPage = 1; // Reset to first page after sorting
     displayResorts();
     updatePageInfo();
-    updatePaginationButtons();
 }
 
 function displayFirstVilla(rooms) {
@@ -60,15 +57,12 @@ function displayFirstVilla(rooms) {
 function displayResorts() {
     const container = document.getElementById('resorts-container');
     container.innerHTML = '';
-
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     const paginatedResorts = sortedResorts.slice(start, end);
-
     paginatedResorts.forEach(resort => {
         const resortElement = document.createElement('div');
         resortElement.className = 'resort';
-
         resortElement.innerHTML = `
             <div class="resort-image">
                 <img src="${resort.Images[0]}" alt="${resort.Name}">
@@ -89,10 +83,8 @@ function displayResorts() {
                 <button class="view-offer">View offer</button>
             </div>
         `;
-
         container.appendChild(resortElement);
     });
-
     updatePaginationButtons();
 }
 
