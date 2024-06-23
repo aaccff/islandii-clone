@@ -3,17 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resorts</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Resort Listings</title>
 </head>
 <body>
-    <div id="resorts-container"></div>
-    <div id="pagination">
-        <button id="prev" onclick="prevPage()">Previous</button>
-        <span id="page-info"></span>
-        <button id="next" onclick="nextPage()">Next</button>
+    <div class="filter">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="swimming">Swimming</button>
+        <button data-filter="kids">Kids</button>
+        <button data-filter="pets">Pets</button>
     </div>
-    <input type="file" id="file-input" onchange="loadJSON(event)">
+    <div class="resort-container">
+        <!-- Example Resort Card -->
+        <div class="resort swimming">
+            <div class="resort-image">
+                <img src="resort.jpg" alt="Resort Image">
+            </div>
+            <div class="resort-details">
+                <div class="resort-header">
+                    <h2 class="resort-name">Resort Name</h2>
+                    <p class="review">Review: <span>★★★★☆</span></p>
+                    <p class="resort-rating">Rating: 4.5</p>
+                </div>
+                <div class="resort-info">
+                    <p class="resort-price">Price per night: $200</p>
+                    <button class="resort-button">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- More Resort Cards -->
+    </div>
+    <div class="pagination"></div>
     <script src="script.js"></script>
 </body>
 </html>
+
