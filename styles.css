@@ -1,107 +1,105 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 0;
 }
 
-#resorts-container {
+.filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filter button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.filter button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.resort-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
+    justify-content: center;
 }
 
 .resort {
     display: flex;
-    background: #fff;
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 5px;
     margin: 10px;
-    width: 100%;
-    max-width: 800px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     overflow: hidden;
-    transition: transform 0.3s ease;
+    max-width: 800px;
+    width: 100%;
 }
 
-.resort:hover {
-    transform: translateY(-5px);
-}
-
-.resort img {
-    width: 200px;
-    height: 100%;
-    object-fit: cover;
-}
-
-.resort-column {
-    padding: 15px;
-}
-
-.resort-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.resort-image {
     flex: 1;
 }
 
-.resort-header {
+.resort-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.resort-details {
+    flex: 2;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    padding: 10px;
+}
+
+.resort-header {
+    margin-bottom: auto;
 }
 
 .resort-name {
-    font-size: 1.5em;
     margin: 0;
 }
 
-.review {
-    color: #888;
+.review, .resort-rating, .resort-price {
+    margin: 5px 0;
 }
 
-.resort-rating p {
-    margin: 0;
+.resort-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
-.resort-description {
-    margin: 10px 0;
-}
-
-.resort-price {
-    font-size: 1.2em;
-    color: #3498db;
-    margin: 10px 0;
-}
-
-button {
-    background: #3498db;
-    color: white;
+.resort-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease;
-    margin-top: 10px;
 }
 
-button:hover {
-    background: #2980b9;
-}
-
-#pagination {
+.pagination {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    margin-top: 20px;
 }
 
-#pagination button {
+.pagination button {
     margin: 0 5px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-#page-info {
-    margin: 0 10px;
-    font-size: 1.2em;
+.pagination button.active {
+    background-color: #007bff;
+    color: #fff;
 }
