@@ -1,3 +1,4 @@
+
 let currentPage = 1;
 const itemsPerPage = 15;
 let resorts = [];
@@ -38,6 +39,22 @@ function filterResorts(criteria) {
     updatePageInfo();
 }
 
+function displayFirstVilla(rooms) {
+    if (rooms && rooms.length > 0) {
+        const room = rooms[0];
+        return `
+            <div class="villa-name-size">
+                <span>${room['Villa Name']}</span>
+            </div>
+            <div class="villa-price-info">
+                <span>per night incl taxes</span>
+                <span class="villa-price">US$ ${(parseFloat(room['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(room['Nights Counts'])).toFixed(2)}</span>
+            </div>
+        `;
+    }
+    return '';
+}
+
 function displayResorts() {
     const container = document.getElementById('resorts-container');
     container.innerHTML = '';
@@ -45,8 +62,29 @@ function displayResorts() {
     const end = start + itemsPerPage;
     const paginatedResorts = sortedResorts.slice(start, end);
     paginatedResorts.forEach(resort => {
-        // Create resort element and add content
-        // Code for creating the resort element remains the same
+        const resortElement = document.createElement('div');
+        resortElement.className = 'resort';
+        resortElement.innerHTML = `
+            <div class="resort-image">
+                <img src="${resort.Images[0]}" alt="${resort.Name}">
+            </div>
+            <div class="resort-info">
+                <h2>${resort.Name}</h2>
+                <div class="rating-review">
+                    <span class="rating">⭐ ${resort.Rating}</span>
+                    <span class="review">${resort.Review}</span>
+                    <span class="number-of-reviews" style="background-color: lightyellow; padding: 2px 4px; border: 1px solid black; color: green;">${resort['Total Number of Reviews']} reviews</span>
+                </div>
+                <div class="villa-details">
+                    ${displayFirstVilla(resort.Rooms)}
+                </div>
+            </div>
+            <div class="resort-price">
+                <span class="price">US$ ${(parseFloat(resort.Rooms[0]['Villa Prize'].replace(/[^0-9.-]+/g, "")) / parseInt(resort.Rooms[0]['Nights Counts'])).toFixed(2)}</span>
+                <button class="view-offer">View offer</button>
+            </div>
+        `;
+        container.appendChild(resortElement);
     });
     updatePaginationButtons();
 }
@@ -78,9 +116,6 @@ function updatePageInfo() {
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 }
 
-// Call updatePaginationButtons and updatePageInfo after loading resorts
-function displayResorts() {
-    // Your existing code for displaying resorts
-    updatePaginationButtons();
-    updatePageInfo();
-}
+// Initial call to ensure buttons and page info are set up correctly
+updatePaginationButtons();
+updatePageInfo();
