@@ -1,71 +1,92 @@
-// Fetch JSON data
+// Fetch resort data from JSON URL
 fetch('https://raw.githubusercontent.com/aaccff/islandii-clone/main/resorts.json')
     .then(response => response.json())
     .then(data => {
-        // Store resorts data
-        const resorts = data;
+        const resortsContainer = document.getElementById('resorts-container');
 
-        // Variables for pagination
-        let currentPage = 1;
-        const resortsPerPage = 6;
+        // Process and create HTML elements for each resort card
+        data.forEach(resort => {
+            const resortCard = document.createElement('div');
+            resortCard.classList.add('resort-card');
 
-        // Function to display resort cards
-        function displayResorts() {
-            const start = (currentPage - 1) * resortsPerPage;
-            const end = start + resortsPerPage;
-            const pageResorts = resorts.slice(start, end);
+            // Populate resort card with data
+            resortCard.innerHTML = `
+                <img src="${resort.Images[0]}" alt="${resort.Name}">
+                <h3>${resort.Name}</h3>
+                <p>${resort.Location}</p>
+                <p>${resort.Description.substring(0, 100)}...</p>
+                <a href="#" class="more-details">More Details</a>
+            `;
 
-            const resortsContainer = document.getElementById('resorts-container');
-            resortsContainer.innerHTML = '';
+            resortsContainer.appendChild(resortCard);
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching resort data:', error);
+    });
 
-            pageResorts.forEach(resort => {
+// Pagination logic (optional)
+const resortsPerPage = 10;
+let currentPage = 1;
+
+function updatePagination() {
+    const resortsContainer = document.getElementById('resorts-container');
+    const pagination = document.getElementById('pagination');
+
+    // Clear existing resort cards and pagination buttons
+    resortsContainer.innerHTML = '';
+    pagination.innerHTML = '';
+
+    // Fetch resort data from JSON URL
+    fetch('https://raw.githubusercontent.com/aaccff/islandii-clone/main/resorts.json')
+        .then(response => response.json())
+        .then(data => {
+            // Calculate total pages
+            const totalPages = Math.ceil(data.length / resortsPerPage);
+
+            // Display resort cards for the current page
+            const startIndex = (currentPage - 1) * resortsPerPage;
+            const endIndex = startIndex + resortsPerPage;
+            const paginatedResorts = data.slice(startIndex, endIndex);
+
+            paginatedResorts.forEach(resort => {
+                // Create resort card HTML element
                 const resortCard = document.createElement('div');
-                resortCard.classList.add('resort');
+                resortCard.classList.add('resort-card');
+
+                // Populate resort card with data
                 resortCard.innerHTML = `
-                    <div class="resort-column">
-                        <div class="resort-header">
-                            <h2 class="resort-name">${resort.name}</h2>
-                            <p class="review">${resort.review}</p>
-                        </div>
-                        <div class="resort-rating">
-                            <p>Rating: ${resort.rating}</p>
-                        </div>
-                        <div class="resort-description">
-                            <p>${resort.description}</p>
-                        </div>
-                        <p class="resort-price">${resort.price}</p>
-                    </div>
-                    <img src="${resort.image}" alt="${resort.name}">
+                    <img src="${resort.Images[0]}" alt="${resort.Name}">
+                    <h3>${resort.Name}</h3>
+                    <p>${resort.Location}</p>
+                    <p>${resort.Description.substring(0, 100)}...</p>
+                    <a href="#" class="more-details">More Details</a>
                 `;
+
                 resortsContainer.appendChild(resortCard);
             });
-        }
 
-        // Function to update page information
-        function updatePageInfo() {
-            const pageInfo = document.getElementById('page-info');
-            pageInfo.textContent = `Page ${currentPage} of ${Math.ceil(resorts.length / resortsPerPage)}`;
-        }
+            // Create pagination buttons
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.textContent = i;
 
-        // Function to handle previous page button click
-        function prevPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                displayResorts();
-                updatePageInfo();
+                if (i === currentPage) {
+                    button.classList.add('active');
+                }
+
+                button.addEventListener('click', () => {
+                    currentPage = i;
+                    updatePagination();
+                });
+
+                pagination.appendChild(button);
             }
-        }
+        })
+        .catch(error => {
+            console.error('Error fetching resort data:', error);
+        });
+}
 
-        // Function to handle next page button click
-        function nextPage() {
-            if ((currentPage * resortsPerPage) < resorts.length) {
-                currentPage++;
-                displayResorts();
-                updatePageInfo();
-            }
-        }
-
-        // Initial display of resort cards and page information
-        displayResorts();
-        updatePageInfo();
-    });
+// Call updatePagination function to initialize pagination
+updatePagination();
