@@ -7,7 +7,7 @@ fetch('https://raw.githubusercontent.com/aaccff/islandii-clone/main/resorts.json
     // Iterate through the JSON data
     data.forEach(resort => {
       // Create HTML elements dynamically
-      const resortSection = document.createElement('section');
+      const resortArticle = document.createElement('article');
       const resortImage = document.createElement('img');
       const resortTitle = document.createElement('h2');
       const resortDescription = document.createElement('p');
@@ -17,12 +17,12 @@ fetch('https://raw.githubusercontent.com/aaccff/islandii-clone/main/resorts.json
       resortTitle.textContent = resort.name;
       resortDescription.textContent = resort.description;
 
-      // Append elements to the resort section
-      resortSection.appendChild(resortImage);
-      resortSection.appendChild(resortTitle);
-      resortSection.appendChild(resortDescription);
+      // Append elements to the resort article
+      resortArticle.appendChild(resortImage);
+      resortArticle.appendChild(resortTitle);
+      resortArticle.appendChild(resortDescription);
 
-      // Append the resort section to the resorts container
-      resortsContainer.appendChild(resortSection);
+      // Append the resort article to the resorts container
+      resortsContainer.appendChild(resortArticle);
     });
   });
