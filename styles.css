@@ -1,39 +1,105 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-header {
-  background-color: #f8f8f8;
-  padding: 20px;
-  text-align: center;
+.filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
-main {
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 20px;
+.filter-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-article {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.filter-button.active {
+    background-color: #007bff;
+    color: #fff;
 }
 
-img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px;
+.resort-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-footer {
-  background-color: #f8f8f8;
-  padding: 20px;
-  text-align: center;
+.resort {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+}
+
+.resort-image {
+    flex: 1;
+}
+
+.resort-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.resort-details {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.resort-header {
+    margin-bottom: auto;
+}
+
+.resort-name {
+    margin: 0;
+}
+
+.review, .resort-rating, .resort-price {
+    margin: 5px 0;
+}
+
+.resort-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.resort-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    margin: 0 5px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pagination button.active {
+    background-color: #007bff;
+    color: #fff;
 }
