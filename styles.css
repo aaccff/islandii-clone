@@ -1,107 +1,70 @@
-#resorts-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    box-shadow: 0 0 12px 0 rgba(0, 0, 0, .1);
-    transition: all .3s ease;
-    background: #fff;
-    margin-bottom: 20px;
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-    min-height: 236px;
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.resort {
-    display: flex;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin: 10px;
-    width: 100%;
-    max-width: 800px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.resort:hover {
-    transform: translateY(-5px);
-}
-
-.resort img {
-    width: 200px;
-    height: 100%;
-    object-fit: cover;
-}
-
-.resort-column {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
-}
-
-.resort-header {
+/* Header styles */
+header {
+    background-color: #f8f8f8;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.resort-name {
-    font-size: 1.5em;
+/* Navigation styles */
+nav ul {
+    list-style-type: none;
     margin: 0;
-}
-
-.review {
-    color: #888;
-}
-
-.resort-rating p {
-    margin: 0;
-}
-
-.resort-description {
-    margin: 10px 0;
+    padding: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
 }
 
-.resort-price {
-    font-size: 1.2em;
-    color: #3498db;
-    margin: 10px 0;
+nav ul li {
+    margin-right: 10px;
 }
 
-button {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    margin-top: 10px;
+/* Hero styles */
+.hero {
+    background-image: url('hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
 }
 
-button:hover {
-    background: #2980b9;
+/* Resorts styles */
+.resorts {
+    padding: 20px;
 }
 
+.resorts h2 {
+    text-align: center;
+}
+
+.resort-card {
+    /* Resort card styles */
+}
+
+/* Pagination styles */
 #pagination {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    margin-top: 20px;
 }
 
 #pagination button {
     margin: 0 5px;
 }
 
-#page-info {
-    margin: 0 10px;
-    font-size: 1.2em;
+/* Footer styles */
+footer {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
 }
