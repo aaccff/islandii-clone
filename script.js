@@ -1,35 +1,22 @@
-async function fetchResorts() {
-  try {
-    const response = await fetch('https://raw.githubusercontent.com/aaccff/islandii-clone/main/resorts.json');
-    const data = await response.json();
-    displayResorts(data);
-  } catch (error) {
-    console.error('Error fetching resorts data:', error);
-  }
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('https://raw.githubusercontent.com/aaccff/islandii-clone/main/resorts.json')
+        .then(response => response.json())
+        .then(data => renderResorts(data.resorts))
+        .catch(error => console.error('Error fetching resorts:', error));
+});
+
+function renderResorts(resorts) {
+    const container = document.getElementById('resorts-container');
+    resorts.forEach(resort => {
+        const resortCard = document.createElement('div');
+        resortCard.classList.add('resort-card');
+        
+        resortCard.innerHTML = `
+            <img src="${resort.image}" alt="${resort.name}">
+            <h2>${resort.name}</h2>
+            <p>${resort.description}</p>
+        `;
+        
+        container.appendChild(resortCard);
+    });
 }
-
-function displayResorts(resorts) {
-  const resortsSection = document.getElementById('resorts');
-  resorts.forEach(resort => {
-    const resortArticle = document.createElement('article');
-    resortArticle.className = 'resort';
-    
-    const resortImage = document.createElement('img');
-    resortImage.src = resort.imageUrl;
-    resortImage.alt = resort.name;
-
-    const resortName = document.createElement('h2');
-    resortName.textContent = resort.name;
-
-    const resortDescription = document.createElement('p');
-    resortDescription.textContent = resort.description;
-
-    resortArticle.appendChild(resortImage);
-    resortArticle.appendChild(resortName);
-    resortArticle.appendChild(resortDescription);
-
-    resortsSection.appendChild(resortArticle);
-  });
-}
-
-fetchResorts();
