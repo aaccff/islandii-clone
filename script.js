@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const dataURL = 'https://raw.githubusercontent.com/aaccff/islandii-clone/main/resorts.json'; // URL to fetch the resort data
+   fetch('https://raw.githubusercontent.com/aaccff/islandii-clone/main/resorts.json')
     const resortsContainer = document.getElementById('resorts-container');
     const filterButtons = document.querySelectorAll('.filter-button');
     const paginationContainer = document.getElementById('pagination');
