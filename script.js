@@ -1,8 +1,3 @@
-
-let currentPage = 1;
-const itemsPerPage = 12;
-let resorts = [];
-
 // Fetch JSON data
 fetch('https://raw.githubusercontent.com/aaccff/islandii-clone/main/resorts.json')
     .then(response => response.json())
