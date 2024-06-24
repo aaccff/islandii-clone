@@ -1,157 +1,78 @@
-/* Global styles */
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #2b0c0b;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
 }
 
-a {
-    text-decoration: none;
-}
-
-/* Header styles */
 header {
-    background-color: #2b0c0b;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: #FFFFFF;
-}
-
-.logo span {
-    color: #ffb400;
+header h1 {
+  margin: 0;
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
 }
 
-nav ul li {
-    margin-right: 20px;
+nav a {
+  color: #fff;
+  text-decoration: none;
 }
 
-nav ul li a {
-    font-size: 16px;
-    color: #FFFFFF;
+nav a:hover {
+  text-decoration: underline;
 }
 
-nav ul li.active a {
-    color: #ffb400;
+main {
+  padding: 20px;
 }
 
-/* Hero styles */
-.hero {
-    background-image: url('hero-image.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #FFFFFF;
+#resorts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
-.hero h1 {
-    font-size: 48px;
-    font-weight: 700;
-    margin-bottom: 20px;
+.resort {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 300px;
 }
 
-.hero p {
-    font-size: 18px;
-    line-height: 1.5;
+.resort img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
-/* Resorts styles */
-.resorts {
-    padding: 20px;
+.resort h2 {
+  font-size: 1.5em;
+  margin: 15px;
 }
 
-.resorts h2 {
-    font-size: 36px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 40px;
+.resort p {
+  margin: 0 15px 15px;
 }
 
-.resort-card {
-    width: 300px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.resort-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    margin-bottom: 20px;
-}
-
-.resort-card h3 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.resort-card p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-}
-
-.resort-card .more-details {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #ffb400;
-    color: #FFFFFF;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.resort-card .more-details:hover {
-    background-color: #e6a900;
-}
-
-/* Footer styles */
 footer {
-    background-color: #2b0c0b;
-    padding: 10px;
-    text-align: center;
-    color: #FFFFFF;
-}
-
-footer p {
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-footer ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-footer ul li {
-    margin: 0 10px;
-}
-
-footer ul li a {
-    font-size: 14px;
-    color: #FFFFFF;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
 }
