@@ -1,129 +1,109 @@
 
 let currentPage = 1;
-const itemsPerPage = 15;
+const itemsPerPage = 12;
 let resorts = [];
 
+// Fetch JSON data
 fetch('https://raw.githubusercontent.com/aaccff/islandii-clone/main/resorts.json')
     .then(response => response.json())
     .then(data => {
-        resorts = data;
-        localStorage.setItem('resorts', JSON.stringify(resorts));
-        displayResorts();
-        updatePageInfo();
+        const resortsContainer = document.getElementById('resorts-container');
+
+        // Generate resort cards
+        data.forEach(resort => {
+            const resortCard = document.createElement('div');
+            resortCard.classList.add('resort');
+
+            const resortImage = document.createElement('img');
+            resortImage.src = resort.image;
+            resortCard.appendChild(resortImage);
+
+            const resortColumn = document.createElement('div');
+            resortColumn.classList.add('resort-column');
+
+            const resortHeader = document.createElement('div');
+            resortHeader.classList.add('resort-header');
+
+            const resortName = document.createElement('h2');
+            resortName.classList.add('resort-name');
+            resortName.textContent = resort.name;
+            resortHeader.appendChild(resortName);
+
+            const review = document.createElement('p');
+            review.classList.add('review');
+            review.textContent = `Review: ${resort.review}`;
+            resortHeader.appendChild(review);
+
+            const resortRating = document.createElement('p');
+            resortRating.classList.add('resort-rating');
+            resortRating.textContent = `Rating: ${resort.rating}`;
+            resortHeader.appendChild(resortRating);
+
+            resortColumn.appendChild(resortHeader);
+
+            const resortDescription = document.createElement('div');
+            resortDescription.classList.add('resort-description');
+            resortDescription.textContent = resort.description;
+            resortColumn.appendChild(resortDescription);
+
+            const resortPrice = document.createElement('p');
+            resortPrice.classList.add('resort-price');
+            resortPrice.textContent = `Price: $${resort.price}`;
+            resortColumn.appendChild(resortPrice);
+
+            resortCard.appendChild(resortColumn);
+
+            resortsContainer.appendChild(resortCard);
+        });
     })
     .catch(error => {
-        console.error('Error loading JSON:', error);
+        console.error('Error fetching JSON data:', error);
     });
 
-function loadJSON(event) {
-    const file = event.target.files[0];
-    if (!file) return;
+// Pagination functionality
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+const pageInfo = document.getElementById('page-info');
 
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        resorts = JSON.parse(e.target.result);
-        localStorage.setItem('resorts', JSON.stringify(resorts));
-        displayResorts();
-        updatePageInfo();
-    };
-    reader.readAsText(file);
-}
+let currentPage = 1;
+const itemsPerPage = 3;
 
-function displayResorts() {
-    const container = document.getElementById('resorts-container');
-    container.innerHTML = '';
+function updateResorts() {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
 
-    const start = (currentPage - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    const paginatedResorts = resorts.slice(start, end);
+    const resortsContainer = document.getElementById('resorts-container');
+    const resorts = Array.from(resortsContainer.getElementsByClassName('resort'));
 
-    paginatedResorts.forEach((resort, index) => {
-        const resortElement = document.createElement('div');
-        resortElement.className = 'resort';
-
-        const location = "Baa Atoll, 06080, Maldives";
-
-        resortElement.innerHTML = `
-            <img src="${resort.Images[0]}" alt="${resort.Name}">
-            <div class="resort-details">
-                <div class="resort-header">
-                    <h2 class="resort-name">${resort.Name}</h2>
-                    <p class="review">Review: ${resort.Review}</p>
-                </div>
-                <div class="resort-location">
-                    <a href="${resort['Google Map Link']}" target="_blank">${location}</a>
-                </div>
-                <div class="resort-rating">
-                    <p>Rating: ${resort.Rating}</p>
-                </div>
-                <p class="resort-description">${resort.Description.substring(0, 100)}...</p>
-                <button onclick="showMoreDetails(${index})">More Details</button>
-            </div>
-        `;
-
-        container.appendChild(resortElement);
-    });
-
-    adjustFontSizes();
-    updatePaginationButtons();
-}
-
-function adjustFontSizes() {
-    const resortNames = document.querySelectorAll('.resort-name');
-    resortNames.forEach(name => {
-        let fontSize = 24; // Start with a base font size
-        name.style.fontSize = `${fontSize}px`;
-        while (name.scrollWidth > name.clientWidth && fontSize > 12) { // Reduce the font size until it fits or until a minimum font size is reached
-            fontSize--;
-            name.style.fontSize = `${fontSize}px`;
+    resorts.forEach((resort, index) => {
+        if (index >= startIndex && index < endIndex) {
+            resort.style.display = 'flex';
+        } else {
+            resort.style.display = 'none';
         }
     });
+
+    pageInfo.textContent = `Page ${currentPage}`;
 }
 
-function showMoreDetails(index) {
-    const resort = resorts[index];
-    alert(`
-        Name: ${resort.Name}
-        Location: ${resort.Location}
-        Description: ${resort.Description}
-        Rating: ${resort.Rating} (${resort['Total Number of Reviews']})
-        Review: ${resort.Review}
-        Rooms: ${resort.Rooms.map(room => room['Villa Name']).join(', ')}
-    `);
-}
-
-function prevPage() {
+prevButton.addEventListener('click', () => {
     if (currentPage > 1) {
         currentPage--;
-        displayResorts();
-        updatePageInfo();
+        updateResorts();
     }
-}
+});
 
-function nextPage() {
-    if ((currentPage * itemsPerPage) < resorts.length) {
+nextButton.addEventListener('click', () => {
+    const resortsContainer = document.getElementById('resorts-container');
+    const resorts = Array.from(resortsContainer.getElementsByClassName('resort'));
+
+    if (currentPage * itemsPerPage < resorts.length) {
         currentPage++;
-        displayResorts();
-        updatePageInfo();
+        updateResorts();
     }
-}
+});
 
-function updatePaginationButtons() {
-    document.getElementById('prev').disabled = currentPage === 1;
-    document.getElementById('next').disabled = (currentPage * itemsPerPage) >= resorts.length;
-}
-
-function updatePageInfo() {
-    const pageInfo = document.getElementById('page-info');
-    const totalPages = Math.ceil(resorts.length / itemsPerPage);
-    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const storedResorts = localStorage.getItem('resorts');
-    if (storedResorts) {
-        resorts = JSON.parse(storedResorts);
-        displayResorts();
-        updatePageInfo();
+// Initial page load
+updateResorts();
     }
 });
