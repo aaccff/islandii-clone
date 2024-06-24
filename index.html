@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Islandii Resorts</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Resort Listings</title>
 </head>
 <body>
-  <header>
-    <!-- Header content -->
-  </header>
-
-  <main id="resorts">
-    <!-- Resorts content will be dynamically generated here -->
-  </main>
-
-  <footer>
-    <!-- Footer content -->
-  </footer>
-
-  <script src="script.js"></script>
+    <div class="filter">
+        <button class="filter-button" data-filter="all">All</button>
+        <button class="filter-button" data-filter="swimming">Swimming</button>
+        <button class="filter-button" data-filter="kids">Kids</button>
+        <button class="filter-button" data-filter="pets">Pets</button>
+    </div>
+    <div id="resorts-container" class="resort-container">
+        <!-- Resorts will be dynamically inserted here -->
+    </div>
+    <div id="pagination" class="pagination"></div>
+    <script src="script.js"></script>
 </body>
 </html>
