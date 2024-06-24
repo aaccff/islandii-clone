@@ -41,6 +41,12 @@ main {
     transition: transform 0.3s;
 }
 
+.container img {
+  order: -1;
+  grid-column: 1;
+  grid-row: 1;
+}
+
 .resort img {
     width: 150px;
     height: 150px;
