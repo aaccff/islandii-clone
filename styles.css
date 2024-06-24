@@ -9,6 +9,17 @@ body {
 #resorts-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, .1);
+    transition: all .3s ease;
+    background: #fff;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    min-height: 236px;
+}
+    flex-wrap: wrap;
     justify-content: space-around;
     padding: 20px;
 }
@@ -38,9 +49,6 @@ body {
 
 .resort-column {
     padding: 15px;
-}
-
-.resort-details {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -68,6 +76,10 @@ body {
 
 .resort-description {
     margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
 }
 
 .resort-price {
