@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.container img {
+    order: 1;
+}
