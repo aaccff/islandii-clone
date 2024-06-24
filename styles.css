@@ -1,50 +1,70 @@
-/* Reset some default styles */
-body, h1, h2, p {
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
+/* Header styles */
+header {
+    background-color: #f8f8f8;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-header {
-    background-color: #007BFF;
+/* Navigation styles */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 10px;
+}
+
+/* Hero styles */
+.hero {
+    background-image: url('hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #fff;
+}
+
+/* Resorts styles */
+.resorts {
     padding: 20px;
+}
+
+.resorts h2 {
     text-align: center;
 }
 
-#resorts-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-}
-
 .resort-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    width: 300px;
-    overflow: hidden;
+    /* Resort card styles */
 }
 
-.resort-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+/* Pagination styles */
+#pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-.resort-card h2 {
-    font-size: 1.5em;
-    margin: 15px;
+#pagination button {
+    margin: 0 5px;
 }
 
-.resort-card p {
-    margin: 15px;
+/* Footer styles */
+footer {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
 }
