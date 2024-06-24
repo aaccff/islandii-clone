@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resorts</title>
+    <title>Resort Reviews</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="resorts-container"></div>
-    <div id="pagination">
-        <button id="prev" onclick="prevPage()">Previous</button>
-        <span id="page-info"></span>
-        <button id="next" onclick="nextPage()">Next</button>
-    </div>
-    <input type="file" id="file-input" onchange="loadJSON(event)">
+    <header>
+        <h1>Resort Reviews</h1>
+        <input type="file" id="jsonFile" accept=".json">
+    </header>
+    <main>
+        <div id="resorts-container"></div>
+        <div id="pagination">
+            <button id="prevButton" onclick="prevPage()">Previous</button>
+            <span id="page-info"></span>
+            <button id="nextButton" onclick="nextPage()">Next</button>
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
